@@ -195,16 +195,17 @@ public class Grupal2 {
 		return rut;
 	}
 	
-	public static String ingresarAsistentes() throws IOException {
-		boolean ok = false;
-		int rut = 0;
-		for ()
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			String NomAsis = pr.nextLine();
-		}	
-		return rut;
-	}
+	
+	//public static String ingresarAsistentes() throws IOException {
+		//boolean ok = false;
+		//int rut = 0;
+	//for ()
+	//	while ( ok == false) {
+	//		Scanner pr = new Scanner(System.in);
+	//		String NomAsis = pr.nextLine();
+	//	}	
+	//	return rut;
+	//}
 	
 	
 	
