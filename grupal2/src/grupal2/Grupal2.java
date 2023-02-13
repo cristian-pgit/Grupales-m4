@@ -1,6 +1,8 @@
 package grupal2;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Grupal2 {
@@ -8,19 +10,60 @@ public class Grupal2 {
 	public static void main(String[] args) {
 		
 		
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		boolean power = true;
+		while (power == true) {
+			System.out.println("Bienvenido al Sistema de Capacitaciones de la Empresa ''Piquer Dans Les Yeux''");
+			System.out.println();
+			System.out.println("Que Desea hacer?");
+			System.out.println("1 - Crear Cliente");
+			System.out.println("2 - Crear Capacitacion");
+			System.out.println("3 - Consultar Clientes");
+			System.out.println("4 - Consultar Capacitaciones");
+			System.out.println("5 - Salir");
+			Scanner sc = new Scanner(System.in);
+			int opciones = 5;
+			try{
+                opciones = Integer.parseInt(sc.nextLine());
+            } catch (Exception e){
+                System.out.println("OPCIÓN NO VALIDA");
+            }
+			Cliente cliente = null;
+			switch (opciones) {
+				case 1: //Crear Cliente
+					clientes.add(crearCliente(cliente));
+					
+					break;
+				case 2: //Crear Capacitacion
+					
+					
+					break;
+				case 3: // Consultar Clientes
+					
+					
+					break;
+				case 4: // Consultar Capacitaciones
+					
+					
+					break;
+				case 5:
+					System.out.println("Un gusto haberlo ayudado.... Hasta luego");
+					power = false;
+				default:
+                    System.out.println("OPCIÓN NO VALIDA");
+                    
+					
+			}
+		
+			
+		}
+		
+				
 		
 		
-		System.out.println("Bienvenido al Sistema de Capacitaciones Piquer Dans Les Yeux");
-		System.out.println("Favor ingresar Nombre del Cliente");
-		System.out.println("Favor ingresar Rut del Cliente sin puntos ni guion");
-		System.out.println("Favor ingresar Direccion del Cliente");
-		System.out.println("Favor ingresar Comuna");
-		System.out.println("Favor ingresar Telefono de contacto del Cliente");
-		System.out.println("Ingresar dia de la Capacitacion");
-		System.out.println("Ingresar hora de la Capacitacion");
-		System.out.println("Ingresar lugar donde se realizara la Capacitacion");
-		System.out.println("Ingresar la duraccion de la Capacitacion");
-		System.out.println("Ingresar la Cantidad de Asistentes");
+		
+		
+		
 		System.out.println("Favor, ingrese Nombre del Asistente");
 		System.out.println("Favor, ingrese la edad del Asistente");
 		
@@ -33,167 +76,48 @@ public class Grupal2 {
 		
 
 	}
-	//ingresar Nombre
-	public static String ingresarNombre() {
-		boolean ok = false;
-		String nombre = null;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			nombre = pr.nextLine();
-			if(nombre == null || nombre.equals("")) {
-				System.out.println("Nombre no puede estar vacio");
-				System.out.print("Ingresar Nombre: ");
-			} else { 
-				ok = true;
-			}
-		}
-		return nombre;
+	
+	public static Cliente crearCliente(List<Cliente> clientes) {
+		Cliente cliente = new Cliente();
+		Scanner sc = new Scanner(System.in);
+	        try {
+	            cliente.setNombreCliente(Cliente.ingresarNomCliente());
+	            cliente.setComunaCliente(Cliente.ingresarRutCliente());
+	            cliente.setDirCliente(Cliente.ingresarDirCliente());
+	            cliente.setComunaCliente(Cliente.ingresarComCliente());
+	            cliente.setTelefonoCliente(Cliente.ingresarTelefono());
+	            System.out.println("ALUMNO CREADO EXITOSAMENTE");
+	            return cliente;
+	        } catch(Exception e){
+	            System.out.println("HUBO UN ERROR. INTENTE DE NUEVO");
+	            e.printStackTrace();
+	            return null;
+	        }
 	}
 	
-	public static int ingresarRut() {
-		boolean ok = false;
-		int rut = 0;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			boolean esDigito = false;
-			String rutS = pr.nextLine();
-			if(rutS.matches("[0-9]+") && rutS.length() >8){
-                esDigito = true;
-            } else {
-            	System.out.println("Rut no puede estar vacio, ingresar Rut del Cliente sin puntos ni guion");
-				System.out.println("Ingresar RUT:");
-            }
-			if(esDigito == true) {
-				rut = Integer.parseInt(rutS);
-				if(rut > 11111111 && rut > 999999999) {
-					System.out.println("Rut no puede estar vacio, ingresar Rut del Cliente sin puntos ni guion");
-					System.out.print("Ingresar RUT:");
-				} else { 		
-					ok = true;
-				}
-			}
-			
-		} 
-		return rut;
+	public static Capacitacion crearCapacitacion(List<Capacitacion> capacitacion) {
+		Capacitacion capacitacion = new capacitacion();
+		Scanner sc = new Scanner(System.in);
+	        try {
+	            capacitacion.setNomCapacitacion(Cliente.ingresarNomCap());
+	            capacitacion.setDiaCapacitacion(Cliente.ingresarDiaCap());
+	            capacitacion.setHoraCapacitacion(Cliente.ingresarHoraCap());
+	            capacitacion.setLugarCapacitacion(Cliente.ingresarLugarCap());
+	            capacitacion.setDuracionCapacitacion(Capacitacion.ingresarDurCap());
+	            capacitacion.setCantAsistCapacitacion(Capacitacion.ingresarCantAsist());
+	            capacitacion.setNombreAsistente(Capacitacion.ingresarNomAsist());
+	            capacitacion.setEdadAsistCapacitacion(Capacitacion.ingresarEdadAsist());
+	            System.out.println("ALUMNO CREADO EXITOSAMENTE");
+	            return capacitacion;
+	        } catch(Exception e){
+	            System.out.println("HUBO UN ERROR. INTENTE DE NUEVO");
+	            e.printStackTrace();
+	            return null;
+	        }
 	}
 	
-	public static String ingresarDireccion() {
-		boolean ok = false;
-		String nombre = null;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			nombre = pr.nextLine();
-			if(nombre == null || nombre.equals("")) {
-				System.out.println("Direccion no puede estar vacio");
-				System.out.print("Ingresar direccion: ");
-			} else { 
-				ok = true;
-			}
-		}
-		return nombre;
-	}
 	
-	public static String ingresarComuna() {
-		boolean ok = false;
-		String nombre = null;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			nombre = pr.nextLine();
-			if(nombre == null || nombre.equals("")) {
-				System.out.println("Comuna no puede estar vacio");
-				System.out.print("Ingresar Comuna: ");
-			} else { 
-				ok = true;
-			}
-		}
-		return nombre;
-	}
 	
-	//ingresar Telefono
-	public static String ingresarTelefono() throws IOException{
-	       boolean ok = false;
-	       String fono = null;
-	       while (!ok) {
-	           boolean largo = false;
-	           boolean esDigito = false;
-	           Scanner pr = new Scanner(System.in);
-	           fono = pr.nextLine();
-	           if(fono.matches("[0-9]+")){
-	               esDigito = true;
-	           }
-	           if(fono.length() >8 && fono.length() <16){
-	               largo = true;
-	           }
-	           ok = esDigito && largo;
-	       }
-	       return fono;
-	}
-	
-	public static String ingresarDiaCap() {
-		boolean ok = false;
-		String nombre = null;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			nombre = pr.nextLine();
-			if(nombre == null || nombre.equals("")) {
-				System.out.println("El Dia no puede estar vacio");
-				System.out.print("Ingresar Dia de la Capacitacion: ");
-			} else { 
-				ok = true;
-			}
-		}
-		return nombre;
-	}
-	
-	public static String ingresarHoraCap() {
-		boolean ok = false;
-		String nombre = null;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			nombre = pr.nextLine();
-			if(nombre == null || nombre.equals("")) {
-				System.out.println("Hora no puede estar vacio");
-				System.out.print("Ingresar Hora de la Capacitacion: ");
-			} else { 
-				ok = true;
-			}
-		}
-		return nombre;
-	}
-	
-	public static String ingresarLugarCap() {
-		boolean ok = false;
-		String nombre = null;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			nombre = pr.nextLine();
-			if(nombre == null || nombre.equals("")) {
-				System.out.println("Lugar no puede estar vacio");
-				System.out.print("Ingresar Lugar de la Capacitacion: ");
-			} else { 
-				ok = true;
-			}
-		}
-		return nombre;
-	}
-	
-	public static int ingresarCantAsist() {
-		boolean ok = false;
-		int rut = 0;
-		while ( ok == false) {
-			Scanner pr = new Scanner(System.in);
-			boolean esDigito = false;
-			String rutS = pr.nextLine();
-			if(rutS.matches("[0-9]+")){
-				rut = Integer.parseInt(rutS);
-            } else {
-            	System.out.println("la Cantidad de Asistentes no puede estar vacio");
-				System.out.println("Ingresar Cantidad de Asistentes:");
-            }
-				ok = true;
-			}
-		return rut;
-	}
 	
 	
 	//public static String ingresarAsistentes() throws IOException {
