@@ -32,11 +32,12 @@ public class Grupal2 {
 			
 			switch (opciones) {
 				case 1: //Crear Cliente
-					Cliente cliente = crearCliente();
+					Cliente cliente =crearCliente();
 					if (cliente != null) {
+						List<Capacitacion> capacitaciones = asignarCapacitaciones();
+						cliente.setCapacitaciones(capacitaciones);
 						clientes.add(cliente);
 					}
-					
 					
 					break;
 				case 2: //Crear Capacitacion
@@ -46,18 +47,17 @@ public class Grupal2 {
 						//getCapacitaciones().add(capacitacion);
 					}
 					
-					
 					break;
 				case 3: // Consultar Clientes
-					
+					mostrarClientes(clientes);
 					
 					break;
 				case 4: // Consultar Capacitaciones
-					
+			//		mostrarCapacitaciones(List<Capacitacion> capacitaciones);
 					
 					break;
 				case 5:
-					System.out.println("Un gusto haberlo ayudado.... Hasta luego");
+					System.out.println("Un gusto haberlo ayudado... Hasta luego");
 					power = false;
 				default:
                     System.out.println("OPCIÓN NO VALIDA");
@@ -135,7 +135,7 @@ public class Grupal2 {
 			//generar bucle hasta que se  ingrese edad
 			boolean hayEdad = false;
 			while (!hayEdad) {
-				System.out.println("Ingrese el nombre del asistente: ");
+				System.out.println("Ingrese la edad del asistente: ");
 				String edad = pr.nextLine();
 				if (edad ==  null || edad.isEmpty() || !edad.matches("[0-9]+"))
 				{
@@ -151,7 +151,7 @@ public class Grupal2 {
 		}
 		
 		//se cierra conexión a consola
-		pr.close();
+		//pr.close();
 		//se asigna la informaciónde los asistentes
 		capacitacion.setNombreAsistenteCap(nombres);
 		capacitacion.setEdadAsistenteCap(edades);
@@ -163,7 +163,7 @@ public class Grupal2 {
 		String nombre = null;
 		Scanner pr = new Scanner(System.in);
 		while ( ok == false) {
-			System.out.print("Favor ingresar Nombre del Cliente");
+			System.out.print("Favor ingresar Nombre del Cliente: ");
 			nombre = pr.nextLine();
 			if(nombre == null || nombre.equals("") || nombre.length()<3) {
 				System.out.println("Nombre no puede estar vacio");
@@ -178,6 +178,7 @@ public class Grupal2 {
 		boolean ok = false;
 		int rut = 0;
 		while ( ok == false) {
+			System.out.print("Favor ingresar el Rut del Cliente: ");
 			Scanner pr = new Scanner(System.in);
 			boolean esDigito = false;
 			String rutS = pr.nextLine();
@@ -185,7 +186,7 @@ public class Grupal2 {
                 esDigito = true;
             } else {
             	System.out.println("Rut no puede estar vacio, ingresar Rut del Cliente sin puntos ni guion");
-				System.out.println("Ingresar RUT:");
+				System.out.println("Ingresar RUT: ");
             }
 			if(esDigito == true) {
 				rut = Integer.parseInt(rutS);
@@ -205,6 +206,7 @@ public class Grupal2 {
 		boolean ok = false;
 		String nombre = null;
 		while ( ok == false) {
+			System.out.print("Favor ingresar Direccion del Cliente: ");
 			Scanner pr = new Scanner(System.in);
 			nombre = pr.nextLine();
 			if(nombre == null || nombre.equals("")) {
@@ -221,6 +223,7 @@ public class Grupal2 {
 		boolean ok = false;
 		String nombre = null;
 		while ( ok == false) {
+			System.out.print("Favor ingresar Comuna del Cliente: ");
 			Scanner pr = new Scanner(System.in);
 			nombre = pr.nextLine();
 			if(nombre == null || nombre.equals("")) {
@@ -238,6 +241,7 @@ public class Grupal2 {
 	       boolean ok = false;
 	       String fono = null;
 	       while (!ok) {
+	    	   System.out.print("Favor ingresar telefono del Cliente: ");
 	           boolean largo = false;
 	           boolean esDigito = false;
 	           Scanner pr = new Scanner(System.in);
@@ -259,11 +263,11 @@ public class Grupal2 {
 		boolean ok = false;
 		String nombrec = null;
 		while ( ok == false) {
-			System.out.print("Favor ingresar Nombre del Cliente");
+			System.out.print("Favor ingresar Nombre de la Capacitacion: ");
 			Scanner pr = new Scanner(System.in);
 			nombrec = pr.nextLine();
 			if(nombrec == null || nombrec.equals("") || nombrec.length()<3) {
-				System.out.println("Nombre no puede estar vacio");
+				System.out.println("Nombre de Capacitacion no puede estar vacio");
 			} else { 
 				ok = true;
 			}
@@ -275,7 +279,7 @@ public class Grupal2 {
 		boolean ok = false;
 		String dia = null;
 		while ( ok == false) {
-			System.out.println("Ingresar dia de la Capacitacion: ");
+			System.out.print("Ingresar dia de la Capacitacion: ");
 			Scanner pr = new Scanner(System.in);
 			dia = pr.nextLine();
 			if(dia == null || dia.equals("")) {
@@ -291,7 +295,7 @@ public class Grupal2 {
 		boolean ok = false;
 		String nombre = null;
 		while ( ok == false) {
-			System.out.println("Ingresar hora de la Capacitacion: ");
+			System.out.print("Ingresar hora de la Capacitacion: ");
 			Scanner pr = new Scanner(System.in);
 			nombre = pr.nextLine();
 			if(nombre == null || nombre.equals("")) {
@@ -307,7 +311,7 @@ public class Grupal2 {
 		boolean ok = false;
 		String nombre = null;
 		while ( ok == false) {
-			System.out.print("Ingresar lugar donde se realizara la Capacitacion");
+			System.out.print("Ingresar lugar donde se realizara la Capacitacion: ");
 			Scanner pr = new Scanner(System.in);
 			nombre = pr.nextLine();
 			if(nombre == null || nombre.equals("")) {
@@ -323,11 +327,11 @@ public class Grupal2 {
 		boolean ok = false;
 		int dur = 0;
 		while ( ok == false) {
-			System.out.println("Ingresar la duraccion de la Capacitacion");
+			System.out.println("Ingresar la duraccion de la Capacitacion: ");
 			Scanner pr = new Scanner(System.in);
 			boolean esDigito = false;
 			String durS = pr.nextLine();
-			if(durS.matches("[0-9]+") && durS.length() >8){
+			if(durS.matches("[0-9]+") ){
                 esDigito = true;
             } else {
             	System.out.println("La duracion no puede estar vacio");
@@ -349,7 +353,7 @@ public class Grupal2 {
 		boolean ok = false;
 		int casis = 0;
 		while ( ok == false) {
-			System.out.print("Ingresar la Cantidad de Asistentes");
+			System.out.print("Ingresar la Cantidad de Asistentes: ");
 			Scanner pr = new Scanner(System.in);
 			boolean esDigito = false;
 			String cantA = pr.nextLine();
@@ -363,62 +367,95 @@ public class Grupal2 {
 			}
 		return casis;
 	}
-	
-	public static List<String> ingresarNomAsist(int cantAsist) {
-		boolean ok = false;
-		List<String> nombres = new ArrayList<String>();
-		Scanner pr = new Scanner(System.in);
-		int contLocal = 0;
-		while ( contLocal < cantAsist) {
-			System.out.print("Favor ingresar Nombre del Asistente");
-			String nombreA = pr.nextLine();
-			if(nombreA == null || nombreA.equals("") || nombreA.length()<3) {
-				System.out.println("Nombre del asistente no puede estar vacio");
-			} else { 
-				ok = true;
-				nombres.add(nombreA);
-			}
-			contLocal++;
-		}
-		pr.close();
-		return nombres;
-	}
-	
-	public static List<Integer> ingresarEdadAsist() {
-		boolean ok = false;
-		List<Integer> edads = null;
-		int edad = 0;
-		while ( ok == false) {
-			System.out.print("Favor ingresar la edad del Asistente");
-			Scanner pr = new Scanner(System.in);
-			boolean esDigito = false;
-			String edadS = pr.nextLine();
-			if(edadS.matches("[0-9]+")){
-				edad = Integer.parseInt(edadS);
-				esDigito = true;
-            } else {
-            	System.out.println("la edad del Asistentes no puede estar vacio");
-				System.out.print("Ingresar edad del Asistente:");
-            }
-				
-				ok = true;
-			}
-		return edads;
-	}
 
 	
-	//public static String ingresarAsistentes() throws IOException {
-		//boolean ok = false;
-		//int rut = 0;
-	//for ()
-	//	while ( ok == false) {
-	//		Scanner pr = new Scanner(System.in);
-	//		String NomAsis = pr.nextLine();
-	//	}	
-	//	return rut;
-	//}
+	public static void mostrarClientes( List<Cliente> clientes) {
+        for (int x = 0; x < clientes.size(); x++){
+            System.out.println("Cliente "+(x+1));
+            mostrarCliente(clientes.get(x));
+        }
+    }
+	public static void mostrarCliente(Cliente cliente){
+        System.out.println("Nombre: "+cliente.getNombreCliente());
+        System.out.println("RUN: "+cliente.getRutCliente());
+        System.out.println("Nacionalidad: "+cliente.getDirCliente());
+        System.out.println("Dirección: "+cliente.getComunaCliente());
+        System.out.println("Genero: "+cliente.getTelefonoCliente());
+        System.out.println("Correo Electronico: "+cliente.getCapacitaciones());
+       // if (cliente.getNotas()!=null){
+       //     System.out.println("Notas: "+alumno.getNotas().getAllNotas());
+       //   }
+        System.out.println("------------------");
+    }
+	public static void mostrarCapacitaciones( List<Capacitacion> capacitaciones) {
+        for (int x = 0; x < capacitaciones.size(); x++){
+            System.out.println("Capacitacion "+(x+1));
+            mostrarCapacitacion(capacitaciones.get(x));
+        }
+    }
+	public static void mostrarCapacitacion(Capacitacion capacitacion){
+        System.out.println("Nombre: "+capacitacion.getNombreCapacitacion());
+        System.out.println("RUN: "+capacitacion.getDiaCapacitacion());
+        System.out.println("Nacionalidad: "+capacitacion.getHoraCapacitacion());
+        System.out.println("Nacionalidad: "+capacitacion.getLugarCapacitacion());
+        System.out.println("Dirección: "+capacitacion.getDuracionCapacitacion());
+        System.out.println("Dirección: "+capacitacion.getCantAsistCapacitacion());
+        System.out.println("------------------");
+    //    mostrarAsistentes(asistentes.get(x));
+    }
+//	public static void mostrarAsistentes( List<NombreAsistenteCap> capacitaciones) {
+//		for (int x = 0; x < clientes.size(); x++){
+//         System.out.println("Cliente "+(x+1));
+//         mostrarCliente(clientes.get(x));
+//     }
+//     System.out.println("Genero: "+capacitacion.getNombreAsistenteCap());
+//     System.out.println("Correo Electronico: "+capacitacion.getEdadAsistenteCap());
+//	}
+//	 
+//	
+//	public static void mostrarAsistente(Capacitacion capacitacion){
+//		System.out.println("Nombre de Asistente: "+capacitacion.getNombreAsistenteCap());
+//        System.out.println("Edad : "+capacitacion.getEdadAsistenteCap());
+//        System.out.println("------------------");
+//	}
 	
+	private static List<Capacitacion> asignarCapacitaciones(){
+		
+		boolean respuestaValida = leerRespuestaCliente();
+		List<Capacitacion> capacitaciones = new ArrayList<Capacitacion>();
+		while (respuestaValida) { 
+			
+			Capacitacion cap = crearCapacitacion();
+			if (cap != null) {
+				capacitaciones.add(cap);
+				respuestaValida = false;
+			}
+		} 
+		return capacitaciones;
+		
+	}
 	
+	private static boolean leerRespuestaCliente(){ 
+		Scanner sc = new Scanner(System.in);
+		String respuesta = "n";
+		boolean preguntar = true;
+		while (preguntar) {
+			System.out.print("Desea ingresar capacitaciones a este cliente? y/n: ");
+			respuesta = sc.nextLine();
+			preguntar = !respuesta.toLowerCase().equals("y") && !respuesta.toLowerCase().equals("n");
+			
+		}
+		return respuesta.toLowerCase().equals("y");
+	}
+	
+//	Finalizado este proceso, debe mostrar por pantalla los datos de la empresa
+//	que pidió la capacitación, los datos de la capacitación misma, y la cantidad de personas menores a
+//	25 años, entre 26 y 35 años y mayores a 35 años.
+	
+	public static void mostrardatos(Cliente cliente) {
+		System.out.println("La empresa:"+cliente.getNombreCliente()+"");
+		
+	}
 	
 
 }
