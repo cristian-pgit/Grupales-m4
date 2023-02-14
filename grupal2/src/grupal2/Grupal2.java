@@ -17,13 +17,11 @@ public class Grupal2 {
 			System.out.println("Bienvenido al Sistema de Capacitaciones de la Empresa ''Piquer Dans Les Yeux''");
 			System.out.println();
 			System.out.println("Que Desea hacer?");
-			System.out.println("1 - Crear Cliente");
-			System.out.println("2 - Crear Capacitacion");
-			System.out.println("3 - Consultar Clientes");
-			System.out.println("4 - Consultar Capacitaciones");
-			System.out.println("5 - Salir");
+			System.out.println("1 - Ingresar Datos");
+			System.out.println("2 - Mostrar Datos (segun instruccion");
+			System.out.println("3 - Salir");
 			Scanner sc = new Scanner(System.in);
-			int opciones = 5;
+			int opciones = 3;
 			try{
                 opciones = Integer.parseInt(sc.nextLine());
             } catch (Exception e){
@@ -40,36 +38,19 @@ public class Grupal2 {
 					}
 					
 					break;
-				case 2: //Crear Capacitacion
-					
-					Capacitacion capacitacion = crearCapacitacion();
-					if (capacitacion != null) {
-						//getCapacitaciones().add(capacitacion);
-					}
-					
-					break;
-				case 3: // Consultar Clientes
+				case 2: //Mostrar Datos segun lo requerido
 					mostrarClientes(clientes);
 					
 					break;
-				case 4: // Consultar Capacitaciones
-				//	mostrarCapacitaciones(capacitaciones);
-					
-					break;
-				case 5:
+				case 3: // Consultar Client
 					System.out.println("Un gusto haberlo ayudado... Hasta luego");
 					power = false;
 				default:
                     System.out.println("OPCIÓN NO VALIDA");
-                    
-					
 			}
-		
-			
 		}
-			
 	}
-	
+	//Crear Cliente, pide datos y asigna valores
 	public static Cliente crearCliente() {
 		Cliente cliente = new Cliente();
 	        try {
@@ -78,7 +59,7 @@ public class Grupal2 {
 	            cliente.setDirCliente(ingresarDirCliente());
 	            cliente.setComunaCliente(ingresarComCliente());
 	            cliente.setTelefonoCliente(ingresarTelefono());
-	            cliente.setCapacitaciones(new ArrayList<>());
+	            cliente.setCapacitaciones(new ArrayList<>()); //crea lista de capacitacion
 	            System.out.println("CLIENTE CREADO EXITOSAMENTE");
 	            return cliente;
 	        } catch(Exception e){
@@ -87,7 +68,7 @@ public class Grupal2 {
 	            return null;
 	        }
 	}
-	
+	//crear Capacitacion, y asigna valores
 	public static Capacitacion crearCapacitacion() {
 		Capacitacion capacitacion = new Capacitacion();
 		try {
@@ -97,7 +78,7 @@ public class Grupal2 {
         	capacitacion.setLugarCapacitacion(ingresarLugarCap());
         	capacitacion.setDuracionCapacitacion(ingresarDurCap());
         	capacitacion.setCantAsistCapacitacion(ingresarCantAsist());
-        	setInfoAsistente(capacitacion);
+        	setInfoAsistente(capacitacion); //permite el ingreso de los asistentes y se guarden en array
         	System.out.println("CAPACITACION CREADA EXITOSAMENTE");
             return capacitacion;
         } catch(Exception e){
@@ -107,7 +88,7 @@ public class Grupal2 {
         }
 	}
 	
-	
+	//setea los asistentes preguntando nombre y luego edad X veces donde X es Cant Asistentes
 	private static void setInfoAsistente(Capacitacion capacitacion) {
 		//definir array para nombre asistente y edades
 		List<Integer> edades = new ArrayList<Integer>();
@@ -149,15 +130,11 @@ public class Grupal2 {
 			}
 			cont++;
 		}
-		
-		//se cierra conexión a consola
-		//pr.close();
-		//se asigna la informaciónde los asistentes
 		capacitacion.setNombreAsistenteCap(nombres);
 		capacitacion.setEdadAsistenteCap(edades);
 	}
 
-	//ingresar Nombre
+	//ingresar Nombre Cliente valida no este vacio
 	public static String ingresarNomCliente() {
 		boolean ok = false;
 		String nombre = null;
@@ -173,7 +150,7 @@ public class Grupal2 {
 		}
 		return nombre;
 	}
-			
+	// ingreso y valida de rut cliente		
 	public static int ingresarRutCliente() {
 		boolean ok = false;
 		int rut = 0;
@@ -327,7 +304,7 @@ public class Grupal2 {
 		boolean ok = false;
 		int dur = 0;
 		while ( ok == false) {
-			System.out.println("Ingresar la duraccion de la Capacitacion: ");
+			System.out.println("Ingresar la duraccion de la Capacitacion (m): ");
 			Scanner pr = new Scanner(System.in);
 			boolean esDigito = false;
 			String durS = pr.nextLine();
@@ -355,7 +332,6 @@ public class Grupal2 {
 		while ( ok == false) {
 			System.out.print("Ingresar la Cantidad de Asistentes: ");
 			Scanner pr = new Scanner(System.in);
-			boolean esDigito = false;
 			String cantA = pr.nextLine();
 			if(cantA.matches("[0-9]+")){
 				casis = Integer.parseInt(cantA);
@@ -368,23 +344,22 @@ public class Grupal2 {
 		return casis;
 	}
 
-	
+	// llama al array de clientes y los separa para mostrar
 	public static void mostrarClientes( List<Cliente> clientes) {
         for (int x = 0; x < clientes.size(); x++){
             System.out.println("Cliente "+(x+1));
             mostrarCliente(clientes.get(x));
         }
     }
+	//muestra los datos de XCliente y luego sus capacitaciones
 	public static void mostrarCliente(Cliente cliente){
         System.out.println("Nombre: "+cliente.getNombreCliente());
-        System.out.println("RUN: "+cliente.getRutCliente());
+        System.out.println("RUT: "+cliente.getRutCliente());
         System.out.println("Direccion: "+cliente.getDirCliente());
         System.out.println("Comuna: "+cliente.getComunaCliente());
         System.out.println("Telefono: "+cliente.getTelefonoCliente());
-        System.out.println("Capacitaciones: "+cliente.getCapacitaciones());
-       // if (cliente.getNotas()!=null){
-       //     System.out.println("Notas: "+alumno.getNotas().getAllNotas());
-       //   }
+        //System.out.println("Capacitaciones: "+cliente.getCapacitaciones());
+        mostrarCapacitaciones(cliente.getCapacitaciones());
         System.out.println("------------------");
     }
 	public static void mostrarCapacitaciones( List<Capacitacion> capacitaciones) {
@@ -395,43 +370,25 @@ public class Grupal2 {
     }
 	public static void mostrarCapacitacion(Capacitacion capacitacion){
         System.out.println("Nombre: "+capacitacion.getNombreCapacitacion());
-        System.out.println("RUN: "+capacitacion.getDiaCapacitacion());
-        System.out.println("Nacionalidad: "+capacitacion.getHoraCapacitacion());
-        System.out.println("Nacionalidad: "+capacitacion.getLugarCapacitacion());
-        System.out.println("Dirección: "+capacitacion.getDuracionCapacitacion());
-        System.out.println("Dirección: "+capacitacion.getCantAsistCapacitacion());
+        System.out.println("Dia: "+capacitacion.getDiaCapacitacion());
+        System.out.println("Hora: "+capacitacion.getHoraCapacitacion());
+        System.out.println("Lugar: "+capacitacion.getLugarCapacitacion());
+        System.out.println("Duración: "+capacitacion.getDuracionCapacitacion());
+        System.out.println("Cant. Asistentes: "+capacitacion.getCantAsistCapacitacion());
+        mostrarAsistentes(capacitacion.getNombreAsistenteCap(), capacitacion.getEdadAsistenteCap());
         System.out.println("------------------");
-    //    mostrarAsistentes(asistentes.get(x));
+        System.out.println("Presione una tecla para continuar");
+        Scanner ak = new Scanner(System.in);
+		String anykey = ak.nextLine();
     }
-	
-	public String getCapacitaciones(){
-
-        StringBuffer retorno = new StringBuffer("\n");
-        retorno.append(Capacitacion.class.toString()+"\n");
-        return retorno.toString();
-    }
-	public String getAsistentes(){
-
-        StringBuffer retorno = new StringBuffer("\n");
-        retorno.append("Nombre:"+Capacitacion.class.toString()+"\n");
-        retorno.append("Edad:"+Capacitacion.class.toString()+"\n");
-        return retorno.toString();
-    }
-//	public static void mostrarAsistentes( List<NombreAsistenteCap> capacitaciones) {
-//		for (int x = 0; x < clientes.size(); x++){
-//         System.out.println("Cliente "+(x+1));
-//         mostrarCliente(clientes.get(x));
-//     }
-//     System.out.println("Genero: "+capacitacion.getNombreAsistenteCap());
-//     System.out.println("Correo Electronico: "+capacitacion.getEdadAsistenteCap());
-//	}
-//	 
-//	
-//	public static void mostrarAsistente(Capacitacion capacitacion){
-//		System.out.println("Nombre de Asistente: "+capacitacion.getNombreAsistenteCap());
-//        System.out.println("Edad : "+capacitacion.getEdadAsistenteCap());
-//        System.out.println("------------------");
-//	}
+	private static void mostrarAsistentes(List<String> nombres, List<Integer> edads) {
+		for (int i = 0; i < nombres.size(); i++) {
+			if (edads.get(i)>25 && edads.get(i)<35){
+				System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
+			}
+		}
+		
+	}
 	
 	private static List<Capacitacion> asignarCapacitaciones(){
 		
@@ -457,19 +414,7 @@ public class Grupal2 {
 			System.out.print("Desea ingresar capacitaciones a este cliente? y/n: ");
 			respuesta = sc.nextLine();
 			preguntar = !respuesta.toLowerCase().equals("y") && !respuesta.toLowerCase().equals("n");
-			
 		}
 		return respuesta.toLowerCase().equals("y");
 	}
-	
-//	Finalizado este proceso, debe mostrar por pantalla los datos de la empresa
-//	que pidió la capacitación, los datos de la capacitación misma, y la cantidad de personas menores a
-//	25 años, entre 26 y 35 años y mayores a 35 años.
-	
-	public static void mostrardatos(Cliente cliente) {
-		System.out.println("La empresa:"+cliente.getNombreCliente()+"");
-		
-	}
-	
-
 }
