@@ -1,7 +1,6 @@
 package grupal2;
 
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.List;
 
 public class Cliente {
 	
@@ -11,6 +10,7 @@ public class Cliente {
 	private String dirCliente;
 	private String comunaCliente;
 	private String telefonoCliente;
+	private List<Capacitacion> capacitaciones;
 	
 	public int getRutCliente() {
 		return rutCliente;
@@ -44,6 +44,12 @@ public class Cliente {
 	}
 	
 	
+	public List<Capacitacion> getCapacitaciones() {
+		return capacitaciones;
+	}
+	public void setCapacitaciones(List<Capacitacion> capacitaciones) {
+		this.capacitaciones = capacitaciones;
+	}
 	public Cliente() {
 		
 	}
