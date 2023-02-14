@@ -1,1 +1,8 @@
-# Grupal1-m4
+# Grupales-modulo4
+
+Integrantes:
+Cristian Carrillo
+Matias 
+Adrian 
+Jorge Arancibia
+Waldo Pizarro
