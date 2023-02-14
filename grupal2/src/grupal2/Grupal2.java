@@ -53,7 +53,7 @@ public class Grupal2 {
 					
 					break;
 				case 4: // Consultar Capacitaciones
-			//		mostrarCapacitaciones(List<Capacitacion> capacitaciones);
+				//	mostrarCapacitaciones(capacitaciones);
 					
 					break;
 				case 5:
@@ -378,10 +378,10 @@ public class Grupal2 {
 	public static void mostrarCliente(Cliente cliente){
         System.out.println("Nombre: "+cliente.getNombreCliente());
         System.out.println("RUN: "+cliente.getRutCliente());
-        System.out.println("Nacionalidad: "+cliente.getDirCliente());
-        System.out.println("Dirección: "+cliente.getComunaCliente());
-        System.out.println("Genero: "+cliente.getTelefonoCliente());
-        System.out.println("Correo Electronico: "+cliente.getCapacitaciones());
+        System.out.println("Direccion: "+cliente.getDirCliente());
+        System.out.println("Comuna: "+cliente.getComunaCliente());
+        System.out.println("Telefono: "+cliente.getTelefonoCliente());
+        System.out.println("Capacitaciones: "+cliente.getCapacitaciones());
        // if (cliente.getNotas()!=null){
        //     System.out.println("Notas: "+alumno.getNotas().getAllNotas());
        //   }
@@ -402,6 +402,20 @@ public class Grupal2 {
         System.out.println("Dirección: "+capacitacion.getCantAsistCapacitacion());
         System.out.println("------------------");
     //    mostrarAsistentes(asistentes.get(x));
+    }
+	
+	public String getCapacitaciones(){
+
+        StringBuffer retorno = new StringBuffer("\n");
+        retorno.append(Capacitacion.class.toString()+"\n");
+        return retorno.toString();
+    }
+	public String getAsistentes(){
+
+        StringBuffer retorno = new StringBuffer("\n");
+        retorno.append("Nombre:"+Capacitacion.class.toString()+"\n");
+        retorno.append("Edad:"+Capacitacion.class.toString()+"\n");
+        return retorno.toString();
     }
 //	public static void mostrarAsistentes( List<NombreAsistenteCap> capacitaciones) {
 //		for (int x = 0; x < clientes.size(); x++){
