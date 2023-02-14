@@ -2,7 +2,7 @@
 
 Integrantes:
 Cristian Carrillo,
-Matias ,
-Adrian ,
+Matias Calderon,
+Adrian DelaAbarca,
 Jorge Arancibia,
 Waldo Pizarro.
