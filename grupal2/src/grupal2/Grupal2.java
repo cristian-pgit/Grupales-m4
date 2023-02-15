@@ -382,11 +382,24 @@ public class Grupal2 {
 		String anykey = ak.nextLine();
     }
 	private static void mostrarAsistentes(List<String> nombres, List<Integer> edads) {
+		int contMayor = 0;
+		int contEntre = 0;
+		int contMenor = 0;	
 		for (int i = 0; i < nombres.size(); i++) {
-			if (edads.get(i)>25 && edads.get(i)<35){
+			if (edads.get(i)>35){
+				contMayor++;
 				System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
-			}
+			} else if (edads.get(i)>=25 && edads.get(i)<=35){
+				contEntre++;
+							System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
+				} else  {
+					contMenor++;
+				System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
+				}
 		}
+		System.out.println("Hay "+contMayor + " asistentes con edades mayores a 35");
+		System.out.println("Hay "+contEntre + " asistentes con edades entre 25 a 35");
+		System.out.println("Hay "+contMenor + " asistentes con edades menores a 25");
 		
 	}
 	
