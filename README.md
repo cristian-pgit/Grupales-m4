@@ -3,6 +3,6 @@
 Integrantes:
 Cristian Carrillo,
 Matias Calderon,
-Adrian DelaAbarca,
+Adrian Fredes,
 Jorge Arancibia,
 Waldo Pizarro.
