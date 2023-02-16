@@ -84,12 +84,8 @@ public class Grupal3 {
         	
 		    System.out.print("Ingrese la calificación del asistente " + nombres[i] + ": ");
 			String	nota = scan.nextLine();
-				if (nota.isEmpty() || !nota.matches("[1-9]") || nota.length()>1){
-					System.out.println("Input no válido");
-					System.out.print("Ingrese la calificación del asistente " + nombres[i] + ": ");
-				} else  { 
-					calificaciones[i] = Integer.parseInt(nota);
-				}
+			String notaValida = validateNota(nombre, nota, scan, i);
+			calificaciones[i] = Integer.parseInt(notaValida);
 	
         }
         
@@ -130,6 +126,20 @@ public class Grupal3 {
 				
 	}
 
+	private static String validateNota( String nombres, String nota, Scanner scan, int posicion) {
+		boolean exito = false;
+		while (!exito) {
+			if (nota.isEmpty() || !nota.matches("[1-9]") || nota.length()>1){
+				System.out.println("Input no válido");
+				System.out.print("Ingrese la calificación del asistente " + nombres + ": ");
+				nota = scan.nextLine();
+			} else  { 
+			exito=true;
+			}
+		}
+		return nota;
+	}
+
 	private static String  validateNombre(String nombre, Scanner scan, int posicion) {
 		boolean exito = false;
 		while (!exito) {
@@ -142,9 +152,6 @@ public class Grupal3 {
 				}	
 		}
 		return nombre;
-		
-    	
-		
 	}			
 
 }
