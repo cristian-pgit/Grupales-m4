@@ -18,7 +18,7 @@ public class Grupal2 {
 			System.out.println();
 			System.out.println("Que Desea hacer?");
 			System.out.println("1 - Ingresar Datos");
-			System.out.println("2 - Mostrar Datos (segun instruccion");
+			System.out.println("2 - Mostrar Datos");
 			System.out.println("3 - Salir");
 			Scanner sc = new Scanner(System.in);
 			int opciones = 3;
@@ -43,7 +43,7 @@ public class Grupal2 {
 					
 					break;
 				case 3: // Consultar Client
-					System.out.println("Un gusto haberlo ayudado... Hasta luego");
+					System.out.println("Un gusto haberle ayudado... Hasta luego");
 					power = false;
 				default:
                     System.out.println("OPCIÓN NO VALIDA");
@@ -205,7 +205,6 @@ public class Grupal2 {
 			nombre = pr.nextLine();
 			if(nombre == null || nombre.equals("")) {
 				System.out.println("Comuna no puede estar vacio");
-				System.out.print("Ingresar Comuna: ");
 			} else { 
 				ok = true;
 			}
@@ -304,7 +303,7 @@ public class Grupal2 {
 		boolean ok = false;
 		int dur = 0;
 		while ( ok == false) {
-			System.out.println("Ingresar la duraccion de la Capacitacion (m): ");
+			System.out.println("Ingresar la duracion de la Capacitacion (m): ");
 			Scanner pr = new Scanner(System.in);
 			boolean esDigito = false;
 			String durS = pr.nextLine();
@@ -337,7 +336,6 @@ public class Grupal2 {
 				casis = Integer.parseInt(cantA);
             } else {
             	System.out.println("la Cantidad de Asistentes no puede estar vacio");
-				System.out.println("Ingresar Cantidad de Asistentes:");
             }
 				ok = true;
 			}
@@ -358,7 +356,6 @@ public class Grupal2 {
         System.out.println("Direccion: "+cliente.getDirCliente());
         System.out.println("Comuna: "+cliente.getComunaCliente());
         System.out.println("Telefono: "+cliente.getTelefonoCliente());
-        //System.out.println("Capacitaciones: "+cliente.getCapacitaciones());
         mostrarCapacitaciones(cliente.getCapacitaciones());
         System.out.println("------------------");
     }
@@ -382,11 +379,24 @@ public class Grupal2 {
 		String anykey = ak.nextLine();
     }
 	private static void mostrarAsistentes(List<String> nombres, List<Integer> edads) {
+		int contMayor = 0;
+		int contEntre = 0;
+		int contMenor = 0;	
 		for (int i = 0; i < nombres.size(); i++) {
-			if (edads.get(i)>25 && edads.get(i)<35){
+			if (edads.get(i)>35){
+				contMayor++;
 				System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
-			}
+			} else if (edads.get(i)>=25 && edads.get(i)<=35){
+				contEntre++;
+							System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
+				} else  {
+					contMenor++;
+				System.out.println("nombre: "+ nombres.get(i) + " - edad: " + edads.get(i));
+				}
 		}
+		System.out.println("Hay "+contMayor + " asistentes con edades mayores a 35");
+		System.out.println("Hay "+contEntre + " asistentes con edades entre 25 a 35");
+		System.out.println("Hay "+contMenor + " asistentes con edades menores a 25");
 		
 	}
 	
