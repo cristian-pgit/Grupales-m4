@@ -2,8 +2,8 @@
  * 
  */
 /**
- * @author diurno
+ * @author Naitsirc
  *
  */
-module grupal3 {
+module Grupal3 {
 }

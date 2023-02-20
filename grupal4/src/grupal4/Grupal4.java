@@ -30,7 +30,7 @@ public class Grupal4 {
 
 			switch(index){					//Switch permite derivar al usuario a ejecutar un grupo de acciones en especifico, determinadas por su case
 			case 1: // Crear alumno
-				recArray(userData, nroFila, sc);
+				recArray(userData, sc);
 				
 				break;
 			case 2: //Mostrar Usuarios
@@ -47,9 +47,11 @@ public class Grupal4 {
 			case 5: //Eliminar Usuario
 				int run = buscarRun(userData, sc);
 				eliminarUsuario(userData, run, sc);
+				nroFila--;
 				break;                    
 			case 6: //Terminar
 				activo = false;
+				System.out.println("Un placer haberle ayudado");
 				break;
 			default:
 				System.out.println("OPCIÓN NO VALIDA");
@@ -60,16 +62,21 @@ public class Grupal4 {
 	}
 	static int nroFila =0;
 	
-	public static void recArray(String[][] userData, int nroFila, Scanner sc) {
+	
+	public static void recArray(String[][] userData, Scanner sc) {
+	    //int i = 0;
 	    boolean salida = false;
 	    String salir = "";
 	    while (!salida) {
 	        System.out.print("Desea continuar? (y/n): ");//preguntar por salida.
+	        System.out.println("");
 	        salir = sc.nextLine();
 	        if (salir.equals("y")) {
 	            registroUsuario(userData, sc, nroFila);
 	            asignarPerfil(userData, sc, nroFila);
-	            System.out.println("Usuario Creado");
+	            System.out.println("");
+	            System.out.println("***Usuario Creado***");
+	            System.out.println("");
 	            nroFila++;
 	        } else {
 	        	if (!isMinTipoPerfil(userData)) {
@@ -81,6 +88,7 @@ public class Grupal4 {
 	        }
 	    }
 	}
+
 
 	
 	private static boolean isMinTipoPerfil(String[][] userData) {
@@ -118,7 +126,7 @@ public class Grupal4 {
 	private static int buscarRun(String[][] userData, Scanner sc) {
 	    String rune = "";
 	    while (true) {
-	        System.out.print("Ingrese el RUN del Usuario a eliminar: ");
+	        System.out.print("Ingrese el RUN del Usuario: ");
 	        rune = sc.nextLine();
 	        for (int i = 0; i < 100; i++) { // RECORRE EL ARREGLO
 	            if (userData[i][2] != null && userData[i][2].equals(rune)) {
@@ -162,51 +170,43 @@ public class Grupal4 {
 	    }
 	}
 
-	
-	
-	/**
-	 * 
-	 * posición 0: nombre (obligatorio)
-	 * posicion 1: fecha de nacimiento
-	 * posicion 2: run (obligatorio)
-	 * posicion 3:perfil (obligatorio, cliente, profesional, administrativo)
-	 */
-
 	// Datos Generales
 	public static void registroUsuario(String[][] userData, Scanner sc, int i) {   
 		System.out.println("Bienvenido al Registro de Usuarios");
-		System.out.print("");
+		System.out.println("Los campos con * son obligatorios");
+		System.out.println("");
 		String nom = "";
-		while (userData[i][0] == null || nom.isEmpty()) {
-			System.out.print("Por favor ingrese Nombre: ");
+		boolean ok=false;
+		while (!ok) {
+			System.out.print("Por favor ingrese Nombre*: ");
 			nom = sc.nextLine();
-			if (nom.length()<3) {
+			if (nom.trim().length()<3) {
 				System.out.println("no puede estar vacio, ni tener menos de 3 caracteres");
 			} else {
+				ok=true;
 				userData[i][0] = nom;	
 			}
 		}
-		String edad = "";
+		String fecha = "";
 		System.out.print("Ingrese Fecha de nacimiento (DD/MM/AAAA): ");
-		edad = sc.nextLine();
-		userData[i][1] = edad;
+		fecha = sc.nextLine();
+		userData[i][1] = fecha;
 	
 		String run = "";
-		while (userData[i][2] == null ) {
-			System.out.print("Por favor ingrese Rut: ");
-			run = sc.nextLine();
-			if (!run.matches("[1-9]+") && run.length()==9 ) {
+		boolean runok = false;
+		while (!runok) {
+			System.out.print("Por favor ingrese RUT*: ");
+			run = sc.nextLine().trim();
+			if (!run.matches("[1-9]{1}[0-9]{8}")) {
 				System.out.println("No puede estar vacio. Necesita tener 9 digitos");
 			} else {
+				runok = true;
 				userData[i][2] = run;	
 			}
 		}
 		//TODO
 		/*
-		 * ofrecer un menú para perfil que tenga como opciones 1-cliente, 2-administrativo
-		 * 3- profesional
-		 * debe recibir valor numererico (solo esas 3 opciones)
-		 * asignar a la psoción 3 el perfil de manera automatica
+		 * ajustar detalles menores visuales.
 		 * */
 	}
 	public static void asignarPerfil(String[][] userData, Scanner sc, int i) {
@@ -246,50 +246,58 @@ public class Grupal4 {
 
 	public static void pECliente(String[][] userData, Scanner sc, int i) { // RELLENADO DE DATOS CLIENTE
 		String dir = "";
-		while (userData[i][3] == null ) {
-			System.out.println("Por favor, ingrese una direccion: ");
+		boolean dirok = false;
+		while (!dirok) {
+			System.out.println("Por favor, ingrese una direccion*: ");
 			dir = sc.nextLine();
-			if (dir.isEmpty()) {
+			if (dir.isEmpty() || dir.length()<=3) {
 				System.out.println("No puede estar vacio");
 			} else {
+				dirok=true;
 				userData[i][3] = dir;
 			}	
 		}
 		String fono = "";
-		while (userData[i][4] == null ) {
-			System.out.print("Por favor, ingrese un Telefono: ");
+		boolean fonok = false;
+		while (!fonok) {
+			System.out.print("Por favor, ingrese un Telefono*: ");
 			fono = sc.nextLine();
-			if (!fono.matches("[1-9]+") && fono.length()==8 ) {
+			if (!fono.matches("[0-9]{8}")) {
 				System.out.println("No puede estar vacio. Debe tener 8 digitos");
 			} else {
+				fonok = true;
 				userData[i][4]=fono;
 			}
 		}
-		System.out.print("Cantidad de empleados:");
+		System.out.print("Cantidad de empleados: ");
 		userData[i][5]=sc.nextLine();
 	}
 	public static void pEProfesional(String[][] userData, Scanner sc, int i) {  // RELLENADO DE DATOS PROFESIONAL 
 		System.out.println("Años de experiencia");
 		userData[i][6] = sc.nextLine();
 		String dept = "";
-		while (userData[i][7] == null ) {
+		boolean depok = false;
+		while (!depok) {
 			System.out.print("Ingrese Departamento: ");
 			dept = sc.nextLine();
-			if (dept.length()<=3) {
+			if (dept.length()<=3 || dept.isEmpty()) {
 				System.out.println(" no Puede estar vacio");
 			} else {
+				depok = true;
 				userData[i][7] = dept;
 			}
 		}
 	}
 	public static void pEAdministrativo(String[][] userData, Scanner sc, int i) {  // RELLENADO DE DATOS ADMIN
 	    String func = "";
-	    while (userData[i][8] == null ) {
-	        System.out.print("Ingrese Funcion que cumple: ");
+	    boolean funcok = false;
+	    while (!funcok) {
+	        System.out.print("Ingrese Funcion que cumple*: ");
 	        func = sc.nextLine();
-	        if (func.isEmpty()) {
+	        if (func.isEmpty() && func.length()<3) {
 	            System.out.println("No puede estar vacio");
 	        } else {
+	        	funcok = true;
 	            userData[i][8] = func;
 	        }
 	    }
@@ -303,10 +311,20 @@ public class Grupal4 {
 	    int i = 0;
 	    while (i < userData.length && userData[i] != null && userData[i][0] != null && !userData[i][0].isEmpty()) {
 	        System.out.println("Usuario " + (i+1) + ":");
-	        for (int j = 0; j < 10; j++) {
-	            if (userData[i][j] != null && !userData[i][j].isEmpty()) {
-	                System.out.println("\t" + userData[i][j]);
-	            }
+	        System.out.println("\t" +"Nombre: "+ userData[i][0]);
+	        System.out.println("\t" +"Fecha de Nacimiento: "+ userData[i][1]);
+	        System.out.println("\t" +"RUN: "+ userData[i][2]);
+	        if (userData[i][3] != null) {
+	            System.out.println("\t" +"Direccion: "+ userData[i][3]);
+	            System.out.println("\t" +"Telefono: "+ userData[i][4]);
+	        }
+	        if (userData[i][6] != null) {
+	            System.out.println("\t" +"Anos de Experiencia: "+ userData[i][6]);
+	            System.out.println("\t" +"Departamento: "+ userData[i][7]);
+	        }
+	        if (userData[i][8] != null) {
+	            System.out.println("\t" +"Funcion: "+ userData[i][8]);
+	            System.out.println("\t" +"Persona a Cargo: "+ userData[i][9]);
 	        }
 	        i++;
 	    }
@@ -314,48 +332,28 @@ public class Grupal4 {
 
 
 
+
 	public static void contarUsuariosPorCategoria(String[][] userData) {
-	    System.out.println("Ingrese un numero, segun corresponda, para contar usuarios con ese criterio:");
-	    System.out.println("1.- Cliente");
-	    System.out.println("2.- Profesional");
-	    System.out.println("3.- Administrativo");
-	    Scanner sc = new Scanner(System.in);
-	    int opcion = sc.nextInt();
-	    int clientes = 0;
-	    int profesionales = 0;
-	    int administrativos = 0;
-	    for (int i = 0; i < 100; i++) { // RECORRE LAS COLUMNAS
-	        for (int j = 0; j < 10; j++) { // RECORRE LAS FILAS
-	            if (userData[j][i] == null || userData[j][i].isEmpty()) {
-	            } else {
-	                if ((j >= 3) && (j <= 5)) { // CUENTA CLIENTES
-	                    clientes = clientes + 1;
-	                }
-	                if ((j >= 6) && (j <= 7)) { // CUENTA PROFESIONALES
-	                    profesionales = profesionales + 1;
-	                }
-	                if ((j >= 8) && (j <= 9)) { // CUENTA ADMINISTRATIVOS
-	                    administrativos = administrativos + 1;
-	                }
+	    int numClientes = 0;
+	    int numProfesionales = 0;
+	    int numAdministrativos = 0;
+
+	    for (int i = 0; i < userData.length; i++) {
+	        if (userData[i][0] != null) { // Si el nombre está lleno, entonces hay un usuario en esta fila
+	            if (userData[i][2] != null && userData[i][3] != null) { // Si los campos de dirección y teléfono están llenos, entonces es un cliente
+	                numClientes++;
+	            } else if (userData[i][7] != null) { // Si el campo de departamento está lleno, entonces es un profesional
+	                numProfesionales++;
+	            } else if (userData[i][8] != null) { // Si el campo de función está lleno, entonces es un administrativo
+	                numAdministrativos++;
 	            }
 	        }
 	    }
-	    switch (opcion) {
-	        case 1:
-	            System.out.println("Hay " + clientes + " cliente/s ingresado/s");
-	            break;
-	        case 2:
-	            System.out.println("Hay " + profesionales + " profesional/es ingresado/s");
-	            break;
-	        case 3:
-	            System.out.println("Hay " + administrativos + " administrativo/s ingresado/s");
-	            break;
-	        default:
-	            System.out.println("Opcion invalida.");
-	            break;
-	    }
-	    sc.nextLine();
-	    sc.close();
+
+	    System.out.println("Resumen de usuarios:");
+	    System.out.println("Clientes: " + numClientes);
+	    System.out.println("Profesionales: " + numProfesionales);
+	    System.out.println("Administrativos: " + numAdministrativos);
 	}
 
 
