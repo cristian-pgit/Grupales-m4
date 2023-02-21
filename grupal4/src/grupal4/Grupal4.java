@@ -12,14 +12,14 @@ public class Grupal4 {
 		boolean activo = true; // boolean para servir de interruptor de ciclo while
 		while(activo){ //Inicia ciclo while para mantener en repeticion el menu de opciones.
 			System.out.println("");
-			System.out.println("Bienvenido al Sistema informatico de <<Piker Dans Les Youx>>");
-			System.out.println("Ingrese opción");
-			System.out.println("1 - Registrar Usuario");
-			System.out.println("2 - Mostrar Usuarios");
-			System.out.println("3 - Contar Usuarios por Categoria");
-			System.out.println("4 - Modificar Usuario");
-			System.out.println("5 - Eliminar Usuario");
-			System.out.println("6 - Salir");
+			System.out.println(ANSI_CYAN+"Bienvenido al Sistema informatico de"+ANSI_RESET+ANSI_GREEN+"<<"+ANSI_RESET+ANSI_YELLOW+"Piker Dans Les Youx"+ANSI_RESET+ANSI_GREEN+">>"+ANSI_RESET);
+			System.out.println(ANSI_YELLOW+"Ingrese opción"+ANSI_RESET);
+			System.out.println("\t1 - Registrar Usuario");
+			System.out.println("\t2 - Mostrar Usuarios");
+			System.out.println("\t3 - Contar Usuarios por Categoria");
+			System.out.println("\t4 - Modificar Usuario");
+			System.out.println("\t5 - Eliminar Usuario");
+			System.out.println("\t6 - Salir");
 			//Scanner sc = new Scanner(System.in); //abre Scanner para recibir input de consola y recibir la opcion del menu que se desea
 			int index = 0;
 			try{										//Try and Catch, Intenta recibir el index(opcion), en caso de recibir un ingreso que cause error
@@ -75,7 +75,7 @@ public class Grupal4 {
 	            registroUsuario(userData, sc, nroFila);
 	            asignarPerfil(userData, sc, nroFila);
 	            System.out.println("");
-	            System.out.println("***Usuario Creado***");
+	            System.out.println(ANSI_GREEN+"***Usuario Creado***"+ANSI_RESET);
 	            System.out.println("");
 	            nroFila++;
 	        } else {
@@ -139,7 +139,7 @@ public class Grupal4 {
 	
 	private static void eliminarUsuario(String[][] dataUser, int filaAEliminar, Scanner sc) {
 	    while (true) {
-	        System.out.print("¿Está seguro que desea eliminar el usuario en la fila " + filaAEliminar + "? (y/n): ");
+	        System.out.print(ANSI_RED+"[WARNING]"+ANSI_RESET+"¿Está seguro que desea eliminar el usuario en la fila " +ANSI_YELLOW+ filaAEliminar +ANSI_RESET+ "?"+ANSI_GREEN+"(y/n): "+ANSI_RESET);
 	        String respuesta = sc.nextLine();
 	        if (respuesta.equals("y")) {
 	            int resto = 100 - (filaAEliminar+1);
@@ -162,7 +162,7 @@ public class Grupal4 {
 	            }
 	            break;
 	        } else if (respuesta.equals("n")) {
-	            System.out.println("Eliminación cancelada");
+	            System.out.println(ANSI_CYAN+"Eliminación cancelada"+ANSI_RESET);
 	            break;
 	        } else {
 	            System.out.println("Respuesta inválida, por favor ingrese 'y' o 'n'");
@@ -173,7 +173,7 @@ public class Grupal4 {
 	// Datos Generales
 	public static void registroUsuario(String[][] userData, Scanner sc, int i) {   
 		System.out.println("Bienvenido al Registro de Usuarios");
-		System.out.println("Los campos con * son obligatorios");
+		System.out.println(ANSI_YELLOW+"Los campos con * son obligatorios"+ANSI_RESET);
 		System.out.println("");
 		String nom = "";
 		boolean ok=false;
@@ -310,21 +310,21 @@ public class Grupal4 {
 	    System.out.println("Usuarios registrados:");
 	    int i = 0;
 	    while (i < userData.length && userData[i] != null && userData[i][0] != null && !userData[i][0].isEmpty()) {
-	        System.out.println("Usuario " + (i+1) + ":");
-	        System.out.println("\t" +"Nombre: "+ userData[i][0]);
-	        System.out.println("\t" +"Fecha de Nacimiento: "+ userData[i][1]);
-	        System.out.println("\t" +"RUN: "+ userData[i][2]);
+	        System.out.println(ANSI_GREEN+"Usuario " +ANSI_RESET+ (i+1) + ":");
+	        System.out.println("\t" +ANSI_CYAN+"Nombre: "+ANSI_RESET+ userData[i][0]);
+	        System.out.println("\t" +ANSI_CYAN+"Fecha de Nacimiento: "+ANSI_RESET+ userData[i][1]);
+	        System.out.println("\t" +ANSI_CYAN+"RUN: "+ANSI_RESET+ userData[i][2]);
 	        if (userData[i][3] != null) {
-	            System.out.println("\t" +"Direccion: "+ userData[i][3]);
-	            System.out.println("\t" +"Telefono: "+ userData[i][4]);
+	            System.out.println("\t" +ANSI_CYAN+"Direccion: "+ANSI_RESET+ userData[i][3]);
+	            System.out.println("\t" +ANSI_CYAN+"Telefono: "+ANSI_RESET+ userData[i][4]);
 	        }
 	        if (userData[i][6] != null) {
-	            System.out.println("\t" +"Anos de Experiencia: "+ userData[i][6]);
-	            System.out.println("\t" +"Departamento: "+ userData[i][7]);
+	            System.out.println("\t" +ANSI_CYAN+"Anos de Experiencia: "+ANSI_RESET+ userData[i][6]);
+	            System.out.println("\t" +ANSI_CYAN+"Departamento: "+ userData[i][7]);
 	        }
 	        if (userData[i][8] != null) {
-	            System.out.println("\t" +"Funcion: "+ userData[i][8]);
-	            System.out.println("\t" +"Persona a Cargo: "+ userData[i][9]);
+	            System.out.println("\t" +ANSI_CYAN+"Funcion: "+ANSI_RESET+ userData[i][8]);
+	            System.out.println("\t" +ANSI_CYAN+"Persona a Cargo: "+ANSI_RESET+ userData[i][9]);
 	        }
 	        i++;
 	    }
@@ -351,9 +351,9 @@ public class Grupal4 {
 	    }
 
 	    System.out.println("Resumen de usuarios:");
-	    System.out.println("Clientes: " + numClientes);
-	    System.out.println("Profesionales: " + numProfesionales);
-	    System.out.println("Administrativos: " + numAdministrativos);
+	    System.out.println("Clientes: " +ANSI_GREEN+ numClientes+ANSI_RESET);
+	    System.out.println("Profesionales: " +ANSI_GREEN+ numProfesionales+ANSI_RESET);
+	    System.out.println("Administrativos: " +ANSI_GREEN+ numAdministrativos+ANSI_RESET);
 	}
 
 
@@ -362,42 +362,38 @@ public class Grupal4 {
 		asignarPerfil(userData, sc, run);
 	}
 	
-//	boolean encontrado = false;
-//	// buscar el usuario por RUN
-//	for (int i = 0; i < userData.length; i++) {
-//		if (userData[i][0] != null && userData[i][3].equals(run)) {
-//			// usuario encontrado, pedir sus nuevos datos
-//			Scanner scanner = new Scanner(System.in);
-//			System.out.print("Nombre: ");
-//			userData[i][0]= sc.nextLine();
-//			System.out.print("Fecha de nacimiento: ");
-//			userData[i][1]= sc.nextLine();
-//			System.out.print("RUN: ");
-//			userData[i][3]= sc.nextLine();
-//			System.out.print("Dirección: ");
-//			userData[i][4]= sc.nextLine();
-//			System.out.print("Teléfono: ");
-//			userData[i][5]= sc.nextLine();
-//			System.out.print("Cantidad de empleados: ");
-//			userData[i][6]= sc.nextLine();
-//			System.out.print("Años de experiencia: ");
-//			userData[i][7]= sc.nextLine();
-//			System.out.print("Departamento: ");
-//			userData[i][8]= sc.nextLine();
-//			System.out.print("Función: ");
-//			userData[i][9]= sc.nextLine();
-//			System.out.print("Nombre superior: ");
-//			userData[i][10]= sc.nextLine();
-//
-//			encontrado = true;
-//			break;
-//		}
-//	}
-//
-//	if (!encontrado) {
-//		System.out.println("Usuario no encontrado");
-//	}
+	
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
+	public static final String ANSI_RESET = "\u001B[0m";
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
