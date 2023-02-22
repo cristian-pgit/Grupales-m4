@@ -1,6 +1,4 @@
-package grupal5; 
-import java.io.*;
-import java.util.Scanner;
+package grupal5;
 /**
  * <h1>Grupal 5 : POO_ABPRO5_</h1>
  * 
@@ -13,7 +11,7 @@ import java.util.Scanner;
  * 
  * @version 1.0. 
  * 
- * */
+ */
 
 public class Cliente { /** Clase Cliente */
 	
@@ -142,6 +140,7 @@ public class Cliente { /** Clase Cliente */
 	public Cliente() {
 		
 	};
+	
 	/**
 	 * Construye un nuevo objeto Cliente con la información personal y de contacto especificada.
 	 * @param rut el número de RUT del cliente
@@ -168,6 +167,17 @@ public class Cliente { /** Clase Cliente */
 		this.edad = edad;
 	};
 	
+	public String obtenerNombre(String nombres, String apellidos) {
+		return nombres + apellidos;
+
+	}
+	public void obtenerSds (int sds) {
+		if (sds == 1) {
+			System.out.println("Su Sistema de Salud es Fonasa");
+		} else {
+			System.out.println("Su Sistema de Salud es Isapre");
+		}
+	}
 
 	@Override
 	public String toString() {
@@ -175,53 +185,6 @@ public class Cliente { /** Clase Cliente */
 				+ ", afp=" + afp + ", sds=" + sds + ", direccion=" + direccion + ", comuna=" + comuna + ", edad=" + edad + "]";
 	}
 
-	public static void main (String []Args) {
-		
-		// instanciar Scanner
-		Scanner sc = new Scanner(System.in); 
-		
-		// Conseguir datos por Scanner del usuario
-        System.out.print("Ingrese RUT: ");
-        int rut = sc.nextInt();
-        
-        System.out.print("Ingrese nombres: ");
-        String nombres = sc.next();
-        
-        System.out.print("Ingrese apellidos: ");
-        String apellidos = sc.next();
-        
-        System.out.print("Ingrese telefono: ");
-        String telefono = sc.next();
-        
-        System.out.print("Ingrese afp: ");
-        String afp = sc.next();
-        
-        System.out.print("Ingrese sds: ");
-        int sds = sc.nextInt();
-        
-        System.out.print("Ingrese direccion: ");
-        String direccion = sc.next();
-        
-        System.out.print("Ingrese comuna: ");
-        String comuna = sc.next();
-        
-        System.out.print("Ingrese edad: ");
-        int edad = sc.nextInt();
-        
-        // Crear nueva instancia de objeto Cliente
-        Cliente cliente = new Cliente();
-        cliente.setRut(rut);
-        cliente.setNombres(nombres);
-        cliente.setApellidos(apellidos);
-        cliente.setTelefono(telefono);
-        cliente.setAfp(afp);
-        cliente.setSds(sds);
-        cliente.setDireccion(direccion);
-        cliente.setComuna(comuna);
-        cliente.setEdad(edad);
-		
-		System.out.println(cliente);	
-		
-	}
+	
 
 }
