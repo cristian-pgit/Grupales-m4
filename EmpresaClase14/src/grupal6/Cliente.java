@@ -1,4 +1,4 @@
-package grupal5;
+package grupal6;
 /**
  * <h1>Grupal 5 : POO_ABPRO5_</h1>
  * 
@@ -167,14 +167,44 @@ public class Cliente { /** Clase Cliente */
 		this.edad = edad;
 	};
 	
+	public String obtenerNombre(String nombres, String apellidos) {
+		return nombres +" "+ apellidos;
 
+	}
+	public String obtenerSds (int sds) {
+		if (sds == 1) {
+			return "Su Sistema de Salud es Fonasa";
+		} else {
+			return "Su Sistema de Salud es Isapre";
+		}
+	}
 
 	@Override
 	public String toString() {
-		return "Cliente [rut=" + rut + ", nombres=" + nombres + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", afp=" + afp + ", sds=" + sds + ", direccion=" + direccion + ", comuna=" + comuna + ", edad=" + edad + "]";
+		return ANSI_GREEN+"Cliente [rut=" +ANSI_RESET+ANSI_CYAN+ rut +ANSI_RESET+ANSI_GREEN
+				+ ", nombres=" +ANSI_RESET+ANSI_CYAN+ nombres +ANSI_RESET+ANSI_GREEN
+				+ ", apellidos=" +ANSI_RESET+ANSI_CYAN+ apellidos +ANSI_RESET+ANSI_GREEN
+				+ ", telefono=" +ANSI_RESET+ANSI_CYAN+ telefono +ANSI_RESET+ANSI_GREEN+ ", afp=" 
+				+ANSI_RESET+ANSI_CYAN+ afp +ANSI_RESET+ANSI_GREEN+ ", sds=" +ANSI_RESET+
+				ANSI_CYAN+ sds +ANSI_RESET+ANSI_GREEN+ ", direccion=" +ANSI_RESET+ANSI_CYAN
+				+ direccion +ANSI_RESET+ANSI_GREEN+ ", comuna=" +ANSI_RESET+ANSI_CYAN+ comuna 
+				+ANSI_RESET+ANSI_GREEN+ ", edad=" + edad +ANSI_RESET+ANSI_GREEN+ "]"+ANSI_RESET;
 	}
 
 	
+	
+	
+	
+	
+	
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
+	public static final String ANSI_RESET = "\u001B[0m";
 
 }

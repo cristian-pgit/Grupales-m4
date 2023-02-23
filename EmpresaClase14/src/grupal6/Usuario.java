@@ -1,4 +1,4 @@
-package grupal5;
+package grupal6;
 	/**@author Matias Calderon
 	  *Cristian Carrillo
 	  *Adrian
@@ -14,20 +14,25 @@ public class Usuario {
 	private String fecha_nacimiento;
 	private int rut;
 	private Cliente cliente;
+	private Capacitacion[] capacitacion;
 	/**
 	 * @return the nombre
 	 */
 	
-	
-	public Usuario () {//aqui se crea el constructor/
-	
+	//aqui se crea el constructor/
+	public Usuario () {
+		cliente = new Cliente();
 	}
 	
+	// aqui va el constructor con parametros
 	public Usuario(String nombre, String fecha_nacimiento, int rut) {
 		this.nombre = nombre;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.rut = rut;
+		this.capacitacion = new Capacitacion[7];
 	}
+		
+	
 	/**
 	 * @return aqui se consigue el nombre
 	 */
@@ -64,24 +69,37 @@ public class Usuario {
 	public void setRut(int rut) {
 		this.rut = rut;
 	}
-	// aqui va el constructor con parametros
-	public Usuario(String nombre, String fecha_nacimiento, int run, int rut, String nombres, String apellidos, String telefono, String afp, int sds, String direccion, String comuna, int edad) {
-		this.nombre = nombre;
-		this.fecha_nacimiento = fecha_nacimiento;
-		this.rut = rut;
-		this.cliente = new Cliente(rut, nombres, apellidos, telefono, afp, sds, direccion, comuna, edad);
-	}
 	
-
+	public String mostrarEdad() {
+		return "El usuario tiene: "+cliente.getEdad();
+	}
 	
 	@Override
 	public String toString() {
-		return ANSI_GREEN+"Usuario [nombre=" +ANSI_RESET+ANSI_CYAN+ nombre +ANSI_RESET+ANSI_GREEN+ ", fecha_nacimiento=" +ANSI_RESET+ANSI_CYAN+ fecha_nacimiento +ANSI_RESET+ANSI_GREEN+ ", run=" +ANSI_RESET+ANSI_CYAN+ rut +ANSI_RESET+ANSI_GREEN+ "]"+ANSI_RESET;
+		return ANSI_GREEN+"Usuario [nombre=" +ANSI_RESET+ANSI_CYAN+ nombre +ANSI_RESET+ANSI_GREEN
+				+ ", fecha_nacimiento=" +ANSI_RESET+ANSI_CYAN+ fecha_nacimiento +ANSI_RESET
+				+ANSI_GREEN+ ", run=" +ANSI_RESET+ANSI_CYAN+ rut +ANSI_RESET+ANSI_GREEN+ "]"
+				+ANSI_RESET;
 	}
 	/**
 	 * @return the cliente
 	 */
+	public Cliente getCliente() {
+		return cliente;
+	}
+	/**
+	 * @return the capacitacion
+	 */
+	public Capacitacion[] getCapacitacion() {
+		return capacitacion;
+	}
 
+	/**
+	 * @param capacitacion the capacitacion to set
+	 */
+	public void setCapacitacion(Capacitacion[] capacitacion) {
+		this.capacitacion = capacitacion;
+	}
 	/**
 	 * @param cliente the cliente to set
 	 */
