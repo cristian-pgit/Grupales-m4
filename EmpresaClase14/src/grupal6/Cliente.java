@@ -173,11 +173,22 @@ public class Cliente { /** Clase Cliente */
 	}
 	public String obtenerSds (int sds) {
 		if (sds == 1) {
-			return "Su Sistema de Salud es Fonasa";
+			return "Fonasa";
 		} else {
-			return "Su Sistema de Salud es Isapre";
+			return "Isapre";
 		}
 	}
+	
+	public void mostrar(){
+		System.out.println("\tNombre Completo: "+ obtenerNombre(getNombres(), getApellidos()));
+        System.out.println("\tNumero de cel: "+ getTelefono());
+        System.out.println("\tRUT Cliente: "+ getRut());
+        System.out.println("\tAFP: "+ getAfp());
+        System.out.println("\tSistema de Salud: "+ obtenerSds(getSds()));
+        System.out.println("\tDireccion: "+ getDireccion());
+        System.out.println("\tComuna: "+ getComuna());
+        System.out.println("\tEdad: "+ getEdad());
+    }
 
 	@Override
 	public String toString() {

@@ -1,6 +1,7 @@
 package grupal6;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -51,8 +52,8 @@ public class Main {
 		user1.setFecha_nacimiento("12/12/1990");
 		user1.setRut(111111111);
 		user1.getCliente().setEdad(25);
-		user1.getCliente().setNombres("Manso");
-		user1.getCliente().setApellidos("Pato");
+		user1.getCliente().setNombres("El Alan");
+		user1.getCliente().setApellidos("Brito Delgado");
 		user1.getCliente().setAfp("PlanVital");
 		
 		
@@ -75,7 +76,7 @@ public class Main {
 		capa1.setHora("19:00");
 		capa1.setLugar("vina");
 		capa1.setDuracion(30);
-		capa1.setCantaSist(3);
+		capa1.setCantAsist(3);
 		
 		System.out.println(capa1);
 		System.out.println();
@@ -95,7 +96,7 @@ public class Main {
 	     System.out.println();
 	     System.out.println(ANSI_RED+"[ADVERTECIA]"+ANSI_RESET+ANSI_YELLOW+" Nos indican que el usuario ha cambiado su fecha de nacimiento"+ANSI_RESET);
 	     System.out.print(ANSI_CYAN+"Favor ingresar fecha de defuncion-digo nacimiento: "+ANSI_RESET);
-	     user1.setNombre(sc.nextLine());
+	     user1.setFecha_nacimiento(sc.nextLine());
 	     System.out.println(ANSI_GREEN+"**Gracias**"+ANSI_RESET);
 	     System.out.println(user1);
 	     System.out.println();
@@ -106,12 +107,55 @@ public class Main {
 	     System.out.println(capa1);
 	     System.out.println();
 		
+	     
+	   Capacitacion capa3 = new Capacitacion();
+	    capa3.setIdcap(12);
+	    capa3.setRut("111111111-1");
+		capa3.setDia("Lunes");
+		capa3.setHora("19:00");
+		capa3.setLugar("vina");
+		capa3.setDuracion(30);
+		capa3.setCantAsist(2);
+		Usuario asis1 = new Usuario();
+		asis1.setFecha_nacimiento("12/12/1990");
+		asis1.setNombre("El Gordo Luie");
+		asis1.setRut(111111111);
+		asis1.getCliente().setEdad(25);
+		asis1.getCliente().setNombres("El Alan");
+		asis1.getCliente().setApellidos("Brito Delgado");
+		asis1.getCliente().setAfp("PlanVital");
+		asis1.getCliente().setSds(2);
+		asis1.getCliente().setRut(444444444);
+		asis1.getCliente().setDireccion("La Villa Rica");
+		asis1.getCliente().setComuna("La Dehesa");
+		asis1.getCliente().setTelefono("12341234");
+		
+		Usuario asis2 = new Usuario();
+		asis2.setFecha_nacimiento("01/01/1995");
+		asis2.setRut(222222222);
+		asis2.setNombre("El J");
+		asis2.getCliente().setEdad(30);
+		asis2.getCliente().setNombres("Juan");
+		asis2.getCliente().setApellidos("Perez");
+		asis2.getCliente().setAfp("Cuprum");
+		asis2.getCliente().setSds(3);
+		asis2.getCliente().setRut(555555555);
+		asis2.getCliente().setDireccion("Av. Providencia 123");
+		asis2.getCliente().setComuna("Providencia");
+		asis2.getCliente().setTelefono("56785678");
+		
+		capa3.getCantasis().add(asis1);
+		capa3.getCantasis().add(asis2);
+		
+		capa3.morstrar(capa3.cantasis);
 		
 	     
-	     System.out.println("El usuario 1 se se llama: "+user1.getCliente().obtenerNombre(cliente1.getNombres(), cliente1.getApellidos())
-	     +" su fecha de nacimiento es: " + user1.getFecha_nacimiento() + " y su run es: " + user1.getRut() +". " + user1.mostrarEdad()+
-	     " años de edad. Pertenece a la AFP: " + user1.getCliente().getAfp() + " y  " + user1.getCliente().obtenerSds(user1.getCliente().getSds()) 
-	     + " y " + capa2.mostrarDetalle());
+	     System.out.println(ANSI_GREEN+"El usuario 1 se se llama: "+ANSI_RESET+ANSI_CYAN+user1.getCliente().obtenerNombre(user1.getCliente().getNombres(), 
+	    		 user1.getCliente().getApellidos()) +ANSI_RESET+ANSI_GREEN+"\n su fecha de nacimiento es: " +ANSI_RESET+ANSI_CYAN+ user1.getFecha_nacimiento() 
+	    		 +ANSI_RESET+ANSI_GREEN + " y su run es: " +ANSI_RESET+ANSI_CYAN+ user1.getRut() +ANSI_RESET+ANSI_GREEN+". " +ANSI_RESET+ANSI_CYAN
+	    		 + user1.mostrarEdad() +ANSI_RESET+ANSI_GREEN+ " años de edad. Pertenece a la AFP: " +ANSI_RESET+ANSI_CYAN+ user1.getCliente().getAfp() 
+	    		 +ANSI_RESET+ANSI_GREEN+ " y su Sistema de Salud es: " +ANSI_RESET+ANSI_CYAN+ user1.getCliente().obtenerSds(user1.getCliente().getSds()) 
+	    		 +ANSI_RESET+ANSI_GREEN+ "\n . y  " +ANSI_RESET+ANSI_CYAN+ capa2.mostrarDetalle()+ANSI_RESET);
 	     System.out.println("");
 		
 		sc.close();

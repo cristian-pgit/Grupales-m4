@@ -1,5 +1,8 @@
 package grupal6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /* Clase que representa la capacitacion */
 /*@author Jorge Arancibia
  * 		  Cristian Carrillo
@@ -15,6 +18,7 @@ public class Capacitacion {
 	private String lugar;
 	private int duracion;
 	private int cantasist;
+	List<Usuario> cantasis = new ArrayList<Usuario>();
 	
 	
 	public Capacitacion () {} 
@@ -101,7 +105,7 @@ public class Capacitacion {
 		
 	}
 	//@param set cantidad de asistentes/
-	public void setCantaSist(int cantasist) {
+	public void setCantAsist(int cantasist) {
 		this.cantasist = cantasist;
 		
 	}
@@ -133,6 +137,45 @@ public class Capacitacion {
 	
 	
 	
+	/**
+	 * @return the cantasis
+	 */
+	public List<Usuario> getCantasis() {
+		return cantasis;
+	}
+
+	/**
+	 * @param cantasis the cantasis to set
+	 */
+	public void setCantasis(List<Usuario> cantasis) {
+		this.cantasis = cantasis;
+	}
+	
+	
+	public void agregarUsuario(Usuario nuevoUsuario){
+        if (cantasist < 2){
+        	cantasis.add(nuevoUsuario);
+            cantasist++;
+        }
+    }
+
+	public void morstrar(List<Usuario> cantasis){
+        System.out.println("ID de Capacitacion: "+idcap);
+        System.out.println("RUT Cliente" + rut);
+        System.out.println("Dia: " + dia);
+        System.out.println("Hora: " + hora);
+        System.out.println("Lugar: " + lugar);
+        System.out.println("Duraccion (min): " + duracion);
+        System.out.println("Cantidad de Asistentes: "+ cantasist);
+        for (int i=0; i < cantasist; i++){
+        	System.out.println("---- Usuario "+(i+1)+" ----");
+        	cantasis.get(i).mostrar();
+        	
+        }
+    }
+
+
+
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
 	public static final String ANSI_GREEN = "\u001B[32m";

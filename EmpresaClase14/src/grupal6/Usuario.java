@@ -14,7 +14,7 @@ public class Usuario {
 	private String fecha_nacimiento;
 	private int rut;
 	private Cliente cliente;
-	private Capacitacion[] capacitacion;
+
 	/**
 	 * @return the nombre
 	 */
@@ -29,7 +29,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.rut = rut;
-		this.capacitacion = new Capacitacion[7];
+		
 	}
 		
 	
@@ -90,22 +90,29 @@ public class Usuario {
 	/**
 	 * @return the capacitacion
 	 */
-	public Capacitacion[] getCapacitacion() {
-		return capacitacion;
-	}
 
-	/**
-	 * @param capacitacion the capacitacion to set
-	 */
-	public void setCapacitacion(Capacitacion[] capacitacion) {
-		this.capacitacion = capacitacion;
-	}
 	/**
 	 * @param cliente the cliente to set
 	 */
 	//public void setCliente(int i, String string, String string2, String string3, String string4, int j, String string5, String string6, int k) {
 	//	this.cliente = cliente;
 	//}
+	
+	public void mostrar(){
+        System.out.println("\tNombre Usuario: "+ nombre);
+        System.out.println("\tFecha de Nacimiento: "+ fecha_nacimiento);
+        System.out.println("\tRUT: "+ rut);
+        System.out.println("\tNombre Completo: "+ cliente.obtenerNombre(cliente.getNombres(), cliente.getApellidos()));
+        System.out.println("\tNumero de cel: "+ cliente.getTelefono());
+        System.out.println("\tRUT Cliente: "+ cliente.getRut());
+        System.out.println("\tAFP: "+ cliente.getAfp());
+        System.out.println("\tSistema de Salud: "+ cliente.obtenerSds(cliente.getSds()));
+        System.out.println("\tDireccion: "+ cliente.getDireccion());
+        System.out.println("\tComuna: "+ cliente.getComuna());
+        System.out.println("\tEdad: "+ cliente.getEdad());
+        //getCliente().mostrar();
+        
+    }
     	
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
