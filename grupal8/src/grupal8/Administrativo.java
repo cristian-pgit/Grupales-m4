@@ -35,10 +35,9 @@ public class Administrativo extends Usuario {
 	
 	@Override
 	public void analizarUsuario() {
-		System.out.println(ANSI_GREEN+"Analizando el usuario: " +ANSI_RESET+ANSI_CYAN+userName+ANSI_RESET+ANSI_GREEN+
-				"\nFecha de Nacimiento: "+ANSI_RESET+ANSI_CYAN+fNacimiento+ANSI_RESET+ANSI_GREEN+
-				"\nRun: "+ANSI_RESET+ANSI_CYAN+run+ANSI_RESET+ANSI_GREEN+
-				"\nRUT Cliente: "+ANSI_RESET+ANSI_CYAN+area+ANSI_RESET+ANSI_GREEN+
+		
+		super.analizarUsuario();
+		System.out.println(ANSI_GREEN+"Área: "+ANSI_RESET+ANSI_CYAN+area+ANSI_RESET+ANSI_GREEN+
 				"\nAños de Experiencia Previa: "+ANSI_RESET+ANSI_CYAN+exPrevia+ANSI_RESET);
 	}
 	

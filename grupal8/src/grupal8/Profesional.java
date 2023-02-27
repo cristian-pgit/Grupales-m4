@@ -35,10 +35,8 @@ public class Profesional extends Usuario{
 	
 	@Override
 	public void analizarUsuario() {
-		System.out.println(ANSI_GREEN+"Analizando el usuario: " +ANSI_RESET+ANSI_CYAN+userName+ANSI_RESET+ANSI_GREEN+
-				"\nFecha de Nacimiento: "+ANSI_RESET+ANSI_CYAN+fNacimiento+ANSI_RESET+ANSI_GREEN+
-				"\nRun: "+ANSI_RESET+ANSI_CYAN+run+ANSI_RESET+ANSI_GREEN+
-				"\nTitulo Profesional: "+ANSI_RESET+ANSI_CYAN+titulo+ANSI_RESET+ANSI_GREEN+
+		super.analizarUsuario();
+		System.out.println(ANSI_GREEN+"Titulo Profesional: "+ANSI_RESET+ANSI_CYAN+titulo+ANSI_RESET+ANSI_GREEN+
 				"\nFecha de Ingreso: "+ANSI_RESET+ANSI_CYAN+fIngreso+ANSI_RESET);
 	}
 	

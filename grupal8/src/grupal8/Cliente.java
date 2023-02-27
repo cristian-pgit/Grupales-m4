@@ -110,10 +110,8 @@ public class Cliente extends Usuario{
 	
 	@Override
 	public void analizarUsuario() {
-		System.out.println(ANSI_GREEN+"Analizando el usuario: " +ANSI_RESET+ANSI_CYAN+userName+ANSI_RESET+ANSI_GREEN+
-				"\nFecha de Nacimiento: "+ANSI_RESET+ANSI_CYAN+fNacimiento+ANSI_RESET+ANSI_GREEN+
-				"\nRun: "+ANSI_RESET+ANSI_CYAN+run+ANSI_RESET+ANSI_GREEN+
-				"\nRUT Cliente: "+ANSI_RESET+ANSI_CYAN+rut+ANSI_RESET+ANSI_GREEN+
+		super.analizarUsuario();
+		System.out.println(ANSI_GREEN+"RUT Cliente: "+ANSI_RESET+ANSI_CYAN+rut+ANSI_RESET+ANSI_GREEN+
 				"\nNombres: "+ANSI_RESET+ANSI_CYAN+nombres+ANSI_RESET+ANSI_GREEN+
 				"\nApellidos: "+ANSI_RESET+ANSI_CYAN+apellidos+ANSI_RESET+ANSI_GREEN+
 				"\nTelefono: "+ANSI_RESET+ANSI_CYAN+telefono+ANSI_RESET+ANSI_GREEN+

@@ -22,7 +22,7 @@ public class Main {
 		lis.addUsuario(adm3);
 		
 		
-		lis.analizarUsuario();
+		lis.mostrarDatos();
 	}
 
 }
