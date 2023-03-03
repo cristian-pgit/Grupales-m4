@@ -31,9 +31,9 @@ public class Kromi extends Carro{
 	public String toString() {
 		return "Fecha de Fabricacion: "+getFeFabricacion()+
 				"\nMarca: "+getMarca()+
-				"\nTamano:"+getSize();
+				"\nTamano:"+getSize()+"m";
 	}
-	public Kromi(int cOcupantes, String fechaIngreso, String ubicacionX, String ubicacionY, String feFabricacion, String marca, int size) {
+	public Kromi(int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY, String feFabricacion, String marca) {
 		super(cOcupantes, fechaIngreso, ubicacionX, ubicacionY);
 		this.feFabricacion = feFabricacion;
 		this.marca = marca;

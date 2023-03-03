@@ -6,7 +6,7 @@ public class Trupalla extends Carro{
 	private String conductor;
 	private int size = 1;
 	
-	public Trupalla(int cOcupantes, String fechaIngreso, String ubicacionX, String ubicacionY, int armadura, String conductor) {
+	public Trupalla(int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY, int armadura, String conductor) {
 		super(cOcupantes, fechaIngreso, ubicacionX, ubicacionY);
 		this.armadura = armadura;
 		this.conductor = conductor;
@@ -45,12 +45,12 @@ public class Trupalla extends Carro{
 	public String toString() {
 		return "Armadura del vehiculo: "+getArmadura()+
 				"\nPersona que Manipula (Conduce): "+getConductor()+
-				"\nTamano:"+getSize();
+				"\nTamano:"+getSize()+"m";
 
 	}
 
 	
-	
+
 	
 	
 	

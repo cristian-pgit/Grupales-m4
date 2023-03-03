@@ -4,8 +4,8 @@ public class Carro {
 	
 	private int cOcupantes;
 	protected String fechaIngreso;
-	protected String ubicacionX;
-	protected String ubicacionY;
+	protected int ubicacionX;
+	protected int ubicacionY;
 	
 	
 	public int getcOcupantes() {
@@ -14,14 +14,14 @@ public class Carro {
 	public String getFechaIngreso() {
 		return fechaIngreso;
 	}
-	public String getUbicacionX() {
+	public int getUbicacionX() {
 		return ubicacionX;
 	}
-	public String getUbicacionY() {
+	public int getUbicacionY() {
 		return ubicacionY;
 	}
 	
-	public Carro(int cOcupantes, String fechaIngreso, String ubicacionX, String ubicacionY) {
+	public Carro(int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY) {
 		this.cOcupantes = cOcupantes;
 		this.fechaIngreso = fechaIngreso;
 		this.ubicacionX = ubicacionX;

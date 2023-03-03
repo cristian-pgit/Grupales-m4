@@ -6,7 +6,7 @@ public class Caguano extends Carro {
 	private String colorConfeti;
 	private int size = 2;
 	
-	public Caguano (int cOcupantes, String fechaIngreso, String ubicacionX, String ubicacionY, int alcanceTiro, String colorConfeti) {
+	public Caguano (int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY, int alcanceTiro, String colorConfeti) {
 		super(cOcupantes, fechaIngreso, ubicacionX, ubicacionY);
 		this.alcanceTiro = alcanceTiro;
 		this.colorConfeti = colorConfeti;
@@ -46,7 +46,7 @@ public class Caguano extends Carro {
 	public String toString() {
 		return "Alcance de Tiro: "+getAlcanceTiro()+
 				"\nColor de Confeti: "+getColorConfeti()+
-				"\nTamano: " + getSize();
+				"\nTamano: " + getSize()+"m";
 	}
 	
 	
