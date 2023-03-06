@@ -2,33 +2,34 @@ package grupalEvaluacion;
 
 public class Huevo {
 	
-	private String ubicacionX;
-	private String ubicacionY;
+	private int x;
+	private int y;
 	
-	public Huevo(String ubicacionX, String ubicacionY) {
-		this.ubicacionX = ubicacionX;
-		this.ubicacionY = ubicacionY;
+	public Huevo(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
-	public String getUbicacionX() {
-		return ubicacionX;
+	@Override
+	public String toString() {
+		return "Huevo en x:" + x +
+				"\tn y:" + y;
 	}
 
-	public String getUbicacionY() {
-		return ubicacionY;
+	public int getX() {
+		return x;
 	}
 
-	public void setUbicacionX(String ubicacionX) {
-		this.ubicacionX = ubicacionX;
+	public int getY() {
+		return y;
 	}
 
-	public void setUbicacionY(String ubicacionY) {
-		this.ubicacionY = ubicacionY;
+	public void setX(int x) {
+		this.x = x;
 	}
-	
-	
-	public void mostrarDatos() {
-		System.out.println("El Huevo ha caido en: "+getUbicacionX()+" "+getUbicacionY());
+
+	public void setY(int y) {
+		this.y = y;
 	}
 	
 
