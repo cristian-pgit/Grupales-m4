@@ -37,14 +37,15 @@ public class Tablero {
 			Scanner sc = new Scanner(System.in);
 			boolean keepPlaying = true;
 	    	while (keepPlaying) {
-	    		System.out.println("Bientenido al Menu de <<Oeuf les flics>>"+"\tTu Puntaje: "+puntaje);
+	    		System.out.println();
+	    		System.out.println(ANSI_GREEN+"Bientenido al Menu de <<Oeuf les flics>>"+"\tTu Puntaje: "+ANSI_RESET+ANSI_CYAN+puntaje+ANSI_GREEN);
 	    		System.out.println("Ingrese una opción:\n"
 	                + "\t1. Lanzar Huevo\n"
 	                + "\t2. Lanzar Huevo a la suerte\n"
 	                + "\t3. Mostrar los carros de la PKS\n"
 	                + "\t4. Ver info de los Carros PKS\n"
 	                + "\t5. Ver los Huevos lanzados\n"
-	                + "\t6. Salir");
+	                + "\t6. Salir"+ANSI_RESET);
 	        int opcion = sc.nextInt();
 	        switch (opcion) {
 	            case 1:
@@ -68,7 +69,7 @@ public class Tablero {
 			}
 		}
 	    
-			//scanner.close();
+			sc.close();
 		}
 		
 
@@ -178,8 +179,8 @@ public class Tablero {
 		    	}
 		        mostrarTableroH(tableroH);  
 		    }  else {
-		    	System.out.println("El huevo ha impactado simplemente contra el asfalto.... ");
-		    	System.out.println("...puedes escuchar las burlas de los PKS");
+		    	System.out.println(ANSI_CYAN+"El huevo ha impactado simplemente contra el asfalto.... ");
+		    	System.out.println("...puedes escuchar las burlas de los PKS"+ANSI_RESET);
 		    	mostrarTableroH(tableroH);	
 		    }
 	    }
@@ -235,8 +236,8 @@ public class Tablero {
 		    	}
 		        mostrarTableroH(tableroH);  
 		    }  else {
-		    	System.out.println("El huevo ha impactado simplemente contra el asfalto.... ");
-		    	System.out.println("...puedes escuchar las burlas de los PKS");
+		    	System.out.println(ANSI_CYAN+"El huevo ha impactado simplemente contra el asfalto.... ");
+		    	System.out.println("...puedes escuchar las burlas de los PKS"+ANSI_RESET);
 		    	mostrarTableroH(tableroH);	
 		    }
 	    }
