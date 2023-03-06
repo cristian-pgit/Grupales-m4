@@ -20,9 +20,9 @@ public class Tablero {
 			
 			String[][] tablero = new String[15][15];
 			for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
-                tablero[i][j] = "[-]"; // inicializar y dejar en valor blanc en ves que esten null.
-            }
+	            for (int j = 0; j < 15; j++) {
+	                tablero[i][j] = "[-]"; // inicializar y dejar en valor blanc en ves que esten null.
+	            }
 			}
 			
 			ubicarKromis(tablero);
@@ -30,9 +30,9 @@ public class Tablero {
 			ubicarTrupalla(tablero);
 			String[][] tableroH = new String[15][15];
 			for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
-                tableroH[i][j] = "[-]"; // inicializar y dejar en valor blanc en ves que esten null.
-            }
+	            for (int j = 0; j < 15; j++) {
+	                tableroH[i][j] = "[-]"; // inicializar y dejar en valor blanc en ves que esten null.
+	            }
 			}
 		
 			Scanner sc = new Scanner(System.in);
@@ -66,6 +66,7 @@ public class Tablero {
 					break;
 	            case 6:
 	                keepPlaying = false;
+	                System.out.println("Hasta una proxima ocasion...");
 					break;
 			}
 		}

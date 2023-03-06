@@ -29,7 +29,7 @@ public class Kromi extends Carro{
 	
 	@Override
 	public String toString() {
-		return "Fecha de Fabricacion: "+getFeFabricacion()+
+		return super.toString()+"\nFecha de Fabricacion: "+getFeFabricacion()+
 				"\nMarca: "+getMarca()+
 				"\nTamano:"+getSize()+"m";
 	}
@@ -39,13 +39,6 @@ public class Kromi extends Carro{
 		this.feFabricacion = feFabricacion;
 		this.marca = marca;
 	}
-	
-	@Override
-	public void inspeccionar() {
-		super.inspeccionar();
-		System.out.println(toString());
-	}
-	
 	
 	
 

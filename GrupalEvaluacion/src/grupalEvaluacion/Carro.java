@@ -38,7 +38,7 @@ public class Carro implements SuperIntendencia{
 	
 	@Override
 	public void inspeccionar() {
-		System.out.println(toString());
+		System.out.println(this.toString());
 		
 	}
 	

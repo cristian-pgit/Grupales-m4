@@ -40,16 +40,11 @@ public class Caguano extends Carro {
 
 	@Override
 	public String toString() {
-		return 	"Alcance de Tiro: "+getAlcanceTiro()+
+		return 	super.toString()+"\nAlcance de Tiro: "+getAlcanceTiro()+
 				"\nColor de Confeti: "+getColorConfeti()+
 				"\nTamano: " + getSize()+"m";
 	}
 	
-	@Override
-	public void inspeccionar() {
-		super.inspeccionar();
-		System.out.println(toString());
-	}
 	
 	
 
