@@ -12,8 +12,7 @@ public class Huevo {
 
 	@Override
 	public String toString() {
-		return "Huevo en x:" + x +
-				"\tn y:" + y;
+		return "Huevo cayo en (x)" + x + ", (y) " + y;
 	}
 
 	public int getX() {
@@ -32,5 +31,7 @@ public class Huevo {
 		this.y = y;
 	}
 	
-
+	public void mostrarHuevo() {
+		System.out.println(toString());
+	}
 }

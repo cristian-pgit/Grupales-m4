@@ -33,11 +33,19 @@ public class Kromi extends Carro{
 				"\nMarca: "+getMarca()+
 				"\nTamano:"+getSize()+"m";
 	}
+	
 	public Kromi(int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY, String feFabricacion, String marca) {
 		super(cOcupantes, fechaIngreso, ubicacionX, ubicacionY);
 		this.feFabricacion = feFabricacion;
 		this.marca = marca;
 	}
+	
+	@Override
+	public void inspeccionar() {
+		super.inspeccionar();
+		System.out.println(toString());
+	}
+	
 	
 	
 

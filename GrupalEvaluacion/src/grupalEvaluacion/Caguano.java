@@ -29,10 +29,6 @@ public class Caguano extends Carro {
 		this.colorConfeti = colorConfeti;
 	}
 	
-	public void mostrarDatos() {
-		super.mostrarDatos();
-		System.out.println();
-	}
 
 	public int getSize() {
 		return size;
@@ -44,11 +40,16 @@ public class Caguano extends Carro {
 
 	@Override
 	public String toString() {
-		return "Alcance de Tiro: "+getAlcanceTiro()+
+		return 	"Alcance de Tiro: "+getAlcanceTiro()+
 				"\nColor de Confeti: "+getColorConfeti()+
 				"\nTamano: " + getSize()+"m";
 	}
 	
+	@Override
+	public void inspeccionar() {
+		super.inspeccionar();
+		System.out.println(toString());
+	}
 	
 	
 

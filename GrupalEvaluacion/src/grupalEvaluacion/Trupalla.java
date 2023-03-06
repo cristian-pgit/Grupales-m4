@@ -36,23 +36,18 @@ public class Trupalla extends Carro{
 		this.size = size;
 	}
 	
-	public void mostrarDatos() {
-		super.mostrarDatos();
-		System.out.println();
-	}
-
 	@Override
 	public String toString() {
 		return "Armadura del vehiculo: "+getArmadura()+
 				"\nPersona que Manipula (Conduce): "+getConductor()+
 				"\nTamano:"+getSize()+"m";
-
+	}
+	
+	@Override
+	public void inspeccionar() {
+		super.inspeccionar();
+		System.out.println(toString());
 	}
 
 	
-
-	
-	
-	
-
 }

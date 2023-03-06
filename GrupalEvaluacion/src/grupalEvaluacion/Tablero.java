@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Tablero {
 	
 		private static List<Carro> pks = new ArrayList<Carro>(18);
@@ -58,10 +59,10 @@ public class Tablero {
 	            	mostrarTableroPks(tablero);
 	                break;
 	            case 4:
-	            	System.out.println(pks);
+	            	mostrarDatos();
 					break;
 	            case 5:
-	                System.out.println(huevos);
+	                mostrarHuevos(tablero);
 					break;
 	            case 6:
 	                keepPlaying = false;
@@ -138,16 +139,17 @@ public class Tablero {
 	}
 	
 	public static void lanzarHuevo(String tablero [][], String tableroH [][], Scanner scanner) {
-	    
+	    int x;
+	    int y;
 	    boolean lanzamientoOk = false;
 	    while (lanzamientoOk == false) {
 	    	System.out.println("Ingrese la columna donde desea lanzar el huevo (de 0 a 14):");
-		    int x = scanner.nextInt();
+		    x = scanner.nextInt();
 		    if (x <= 14) {
 		    	System.out.println("Posicion incorrecta. Debe de ser de 0 a 14");
 		    }
 		    System.out.println("Ingrese la fila donde desea lanzar el huevo (de 0 a 14):");
-		    int y = scanner.nextInt();   
+		    y = scanner.nextInt();   
 		    if (y >= 14) {
 		    	System.out.println("Posicion incorrecta. Debe de ser de 0 a 14");
 		    }
@@ -157,8 +159,7 @@ public class Tablero {
 	            for (int j = 0; j < 1; j++) {
 	                tableroH[x + j][y] = "["+ANSI_YELLOW+"H"+ANSI_RESET+"]";
 	            }
-	            
-	        }
+		    }  
 		    Huevo huevo = new Huevo(x,y);
 		    huevos.add(huevo);
 		    if(tablero[x][y] != "[-]") {
@@ -184,7 +185,6 @@ public class Tablero {
 		    	mostrarTableroH(tableroH);	
 		    }
 	    }
-	     
 	}
 	
 	public static void mostrarTableroPks(String [][] tablero) {
@@ -241,6 +241,39 @@ public class Tablero {
 		    	mostrarTableroH(tableroH);	
 		    }
 	    }
+	
+	public static void mostrarDatos() {
+		int i = 1;
+		for (Carro c:pks) {
+			System.out.println(ANSI_WHITE+"----------------- Vehiculo: "+i+" -----------------------"+ANSI_RESET);
+			c.inspeccionar();
+			i++;
+			System.out.println(ANSI_PURPLE+"----------------------------------------------------"+ANSI_RESET);
+		}
+		
+	}
+	public static void mostrarHuevos(String tablero [][]) {
+		int i = 1;
+		for (Huevo h:huevos) {
+			System.out.println(ANSI_WHITE+"----------------- Huevo: "+i+" -----------------------"+ANSI_RESET);
+			h.mostrarHuevo();
+			if (tablero[h.getX()][h.getY()] == "["+ANSI_CYAN+"T"+ANSI_RESET+"]" ) {
+	    		System.out.println("Le dio a una Trupalla y se la echo!");
+	    		}
+	    	if (tablero[h.getX()][h.getY()] == "["+ANSI_BLUE+"C"+ANSI_RESET+"]" ) {
+	    		System.out.println("Le dio a un Caguano");
+	    	}
+	    	if (tablero[h.getX()][h.getY()] == "["+ANSI_GREEN+"K"+ANSI_RESET+"]" ) {
+	    		System.out.println("Le dio a una Kromi");
+	    	}
+			i++;
+			System.out.println(ANSI_PURPLE+"----------------------------------------------------"+ANSI_RESET);
+		}
+		
+	}
+	
+	public static final String ANSI_WHITE = "\u001B[37m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_BLUE = "\u001B[34m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_GREEN = "\u001B[32m";

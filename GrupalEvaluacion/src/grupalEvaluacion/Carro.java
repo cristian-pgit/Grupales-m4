@@ -1,6 +1,6 @@
 package grupalEvaluacion;
 
-public class Carro {
+public class Carro implements SuperIntendencia{
 	
 	private int cOcupantes;
 	protected String fechaIngreso;
@@ -28,12 +28,18 @@ public class Carro {
 		this.ubicacionY = ubicacionY;
 	}
 	
-	public void mostrarDatos() {
-		System.out.println("Cantidad de Ocupantes: " + getcOcupantes()+
+	@Override
+	public String toString() {
+		return "Cantidad de Ocupantes: " + getcOcupantes()+
 				"\nFecha de ingreso a la Institucion: "+getFechaIngreso()+
 				"\nUbicacion en Eje X: "+getUbicacionX()+
-				"\nUbicacion en Eje Y: "+getUbicacionY());
-				
+				"\nUbicacion en Eje Y: "+getUbicacionY();
+	}
+	
+	@Override
+	public void inspeccionar() {
+		System.out.println(toString());
+		
 	}
 	
 	
