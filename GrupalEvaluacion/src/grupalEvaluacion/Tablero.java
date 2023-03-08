@@ -1,5 +1,6 @@
 package grupalEvaluacion;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -38,12 +39,32 @@ public class Tablero {
 			}
 		}
 		
-	public static String victroria() {
-			return "FELICIDADES\n"
+	public static void victroria() {
+		System.out.println();
+			System.out.println(ANSI_YELLOW+"F"+ANSI_RESET+ANSI_BLUE+"E"+ANSI_RESET+ANSI_RED+"L"+ANSI_CYAN+"I"+ANSI_RESET+ANSI_GREEN+
+					"C"+ANSI_RESET+ANSI_YELLOW+"I"+ANSI_RESET+ANSI_PURPLE+"D"+ANSI_RESET+ANSI_YELLOW+"A"+ANSI_RESET+ANSI_BLUE+
+					"D"+ANSI_RESET+ANSI_RED+"E"+ANSI_RESET+ANSI_CYAN+"S"+ANSI_RESET+"\n"
 					+ "HAS DERROTADO A LA TROPA PKS\n"
-					+ "LA ANARQUIA SE EXIENDE POR OSCARILANDIA FINALMENTE";		
-		}
-		
+					+ "LA ANARQUIA SE EXIENDE POR OSCARILANDIA FINALMENTE"); ;		
+	}
+	
+	public void graficoVictoria() {
+		System.out.println(ANSI_RED+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣧⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⡿⢿⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠀⢀⣴⣿⡿⠟⠋⣿⣿⠙⢿⣿⣆⠀⠈⠙⠻⢿⣿⣦⡀⠀⠀⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⣰⣿⡿⠋⠀⠀⢰⣿⡇⠀⠈⢻⣿⣧⠀⠀⠀⠀⠙⢿⣿⣆⠀⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⢰⣿⡟⠁⠀⠀⢀⣿⡿⠀⠀⠀⠀⠻⣿⣷⡀⠀⠀⠀⠈⢻⣿⡆⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⣿⣿⠀⠀⠀⠀⣼⣿⠇⠀⠀⠀⠀⠀⠙⣿⣷⣀⣀⣤⣤⣴⣿⣿⣿⠀⠀\r\n"
+				+ "⠀⠀⠀⣿⡇⠀⠀⠀⢰⣿⣿⣀⣀⣤⣤⣴⣶⣾⣿⣿⣿⣿⠿⠟⠛⢻⣿⠁⠀⠀\r\n"
+				+ "⠀⠀⣠⣿⣿⣤⣴⣶⣿⣿⣿⣿⠿⠿⠟⠛⠋⠉⠉⠈⢻⣿⣦⠀⠀⣿⣿⠀⠀⠀\r\n"
+				+ "⠀⠀⠿⢿⣿⣿⡋⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣧⣼⣿⠇⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠹⣿⣷⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣹⣿⣿⣏⠀⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠀⠈⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⠟⢿⣿⣆⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠀⣸⣿⡟⠙⠻⢿⣿⣿⣷⣶⣶⣾⣿⣿⡿⠟⠋⠁⠀⠀⢻⣿⣦⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠠⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀\r\n"
+				+ "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"+ANSI_RESET);
+	}
 		
 
 	
@@ -58,7 +79,8 @@ public class Tablero {
             for (int j = 0; j < 3; j++) {
                 tablero[row + j][col] = "["+ANSI_GREEN+"K"+ANSI_RESET+"]";
             }
-            Carro kro1 = new Kromi (15, "15/03/2003", row, col, "25/09/2002", "MegcedesBens");
+            int nOc = random.nextInt(20)+5;
+            Carro kro1 = new Kromi (nOc, randomFecha(), row, col, randomFecha(), randomMarca());
             pks.add(kro1);
         }
     }
@@ -74,7 +96,9 @@ public class Tablero {
             for (int j = 0; j < 2; j++) {
             	tablero[row][col + j] = "["+ANSI_BLUE+"C"+ANSI_RESET+"]";
             }
-            Carro caguamo = new Caguano (15, "15/03/2003", row, col, 2, "Verde Vomito");
+            int nOc = random.nextInt(10)+2;
+            int aT = random.nextInt(3)+1;
+            Carro caguamo = new Caguano (nOc, randomFecha(), row, col,aT, randomColor());
             pks.add(caguamo);
         }
     }
@@ -90,7 +114,8 @@ public class Tablero {
             for (int j = 0; j < 1; j++) {
                 tablero[row + j][col] = "["+ANSI_CYAN+"T"+ANSI_RESET+"]";
             }
-            Carro trupalla = new Trupalla (15, "15/03/2003", row, col, 3, "Juan");
+            int nOc = random.nextInt(2)+1;
+            Carro trupalla = new Trupalla (nOc, "15/03/2003", row, col, nOc, randomName());
             pks.add(trupalla);
         }
     }
@@ -205,12 +230,28 @@ public class Tablero {
 			}
 	}
 	
+//	public static void mostrarTrupalla(String[][] tablero) {
+//	    System.out.println(ANSI_YELLOW+"| 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 |"+ANSI_RESET);
+//	    for (int x=0; x < tablero.length; x++) {
+//	        System.out.print("|");
+//	        for (int y=0; y < tablero[x].length; y++) {
+//	            if (tablero[x][y].contains("T")) {
+//	                System.out.print (tablero[x][y]);
+//	            } else {
+//	                System.out.print ("[ ]");
+//	            }
+//	            if (y!=tablero[x].length-1) System.out.print("");
+//	        }
+//	        System.out.println("|"+ANSI_YELLOW+x+ANSI_RESET);
+//	    }
+//	}
+	
 	public static void takeALuckyShot(String tablero [][], String tableroH [][]) {
 		int x = 0;
 		int y= 0;
 		while(tableroH[x][y].equals("["+ANSI_YELLOW+"H"+ANSI_RESET+"]") || tableroH[x][y].equals("["+ANSI_RED+"H"+ANSI_RESET+"]"))
-			x = random.nextInt(15-1);
-		y = random.nextInt(15-1);
+			x = random.nextInt(15);
+		y = random.nextInt(15);
 		tableroH[x][y] = "["+ANSI_YELLOW+"H"+ANSI_RESET+"]";
 		Huevo huevo = new Huevo(x,y);
 		huevos.add(huevo);
@@ -310,6 +351,65 @@ public class Tablero {
 	    return y;
 	}
 	
+	public static String randomName() {
+		List<String>names = new ArrayList<String>();
+		names.add("Alan Brito Delgado");
+		names.add("Marc Ciano");
+		names.add("Elmento Lathum");
+		names.add("Elza Pato Roto");
+		names.add("Lola Mento Mucho");
+		
+		int randomIndex = random.nextInt(names.size());
+		String randomName = names.get(randomIndex);
+		
+		return randomName;
+	}
+	
+	public static String randomMarca() {
+		List<String>marcas = new ArrayList<String>();
+		marcas.add("Megcedes Bens");
+		marcas.add("Torolla");
+		marcas.add("Mitsu Bushi");
+		marcas.add("Great GUAL");
+		marcas.add("Susuki");
+		
+		int randomIndex = random.nextInt(marcas.size());
+		String randomMarca = marcas.get(randomIndex);
+		
+		return randomMarca;
+	}
+	
+	public static String randomFecha() {
+		List<String>fechas = new ArrayList<String>();
+		fechas.add("11/09/78");
+		fechas.add("05/04/89");
+		fechas.add("21/04/02");
+		fechas.add("07/07/93");
+		fechas.add("02/10/04");
+		fechas.add("02/02/06");
+		fechas.add("02/03/12");
+		
+		int randomIndex = random.nextInt(fechas.size());
+		String randomFecha = fechas.get(randomIndex);
+		
+		return randomFecha;
+	}
+	
+	public static String randomColor() {
+		List<String>color = new ArrayList<String>();
+		color.add("Verde Vomito");
+		color.add("Fanta Devuelta");
+		color.add("Amarillo Pus");
+		color.add("Negro NoPreguntes");
+		color.add("Purpura Venesoso");
+		
+		int randomIndex = random.nextInt(color.size());
+		String randomColor = color.get(randomIndex);
+		
+		return randomColor;
+	}
+	
+
 
 	
 	public static final String ANSI_WHITE = "\u001B[37m";

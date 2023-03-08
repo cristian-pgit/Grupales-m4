@@ -9,7 +9,7 @@ public class Main {
 	public static void main (String[]Args) {
 		board.generarTablero();
 		board.genenrartableroH();
-		board.victroria();
+		
 		
 				
 		board.ubicarKromis(board.tablero);
@@ -52,9 +52,11 @@ public class Main {
 				break;
 			case 0:
 				board.puntaje +=10;
+				//board.mostrarTrupalla(board.tablero);
 			}
 			if (board.puntaje >= 77) {
-				System.out.println(board.victroria()); 
+				board.victroria();
+				board.graficoVictoria();
 				keepPlaying = false;
 			}
 		}
