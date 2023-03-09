@@ -21,6 +21,7 @@ public class Tablero {
 		
 			
 		public String[][] tablero = new String[15][15];
+		
 		public void generarTablero() {
 			for (int i = 0; i < 15; i++) {
 				for (int j = 0; j < 15; j++) {
@@ -115,7 +116,7 @@ public class Tablero {
                 tablero[row + j][col] = "["+ANSI_CYAN+"T"+ANSI_RESET+"]";
             }
             int nOc = random.nextInt(2)+1;
-            Carro trupalla = new Trupalla (nOc, "15/03/2003", row, col, nOc, randomName());
+            Carro trupalla = new Trupalla (nOc, randomFecha(), row, col, nOc, randomName());
             pks.add(trupalla);
         }
     }
@@ -191,7 +192,7 @@ public class Tablero {
 		while (consentir == false) {
 			System.out.print("Ver el tablero te costara 10pts, desea continuar? (y/n)");
 			String ans = scanner.nextLine();
-			if(ans.matches("^[yn]$")){
+			if(ans.matches("^[YyNn]$")){
 				if (ans.equalsIgnoreCase("y")) {
 					System.out.print("tramposo.... supongo te gano la angustia de no darle a nada...aqui tienes");
 					System.out.print(ANSI_PURPLE+"\t10 pts han sido restados"+ANSI_RESET);
@@ -251,7 +252,8 @@ public class Tablero {
 		int y= 0;
 		while(tableroH[x][y].equals("["+ANSI_YELLOW+"H"+ANSI_RESET+"]") || tableroH[x][y].equals("["+ANSI_RED+"H"+ANSI_RESET+"]"))
 			x = random.nextInt(15);
-		y = random.nextInt(15);
+			y = random.nextInt(15);
+			
 		tableroH[x][y] = "["+ANSI_YELLOW+"H"+ANSI_RESET+"]";
 		Huevo huevo = new Huevo(x,y);
 		huevos.add(huevo);
@@ -272,7 +274,7 @@ public class Tablero {
 				puntaje+=3;
 			}
 			mostrarTableroH(tableroH);  
-			
+
 		}  else {
 			System.out.println(ANSI_CYAN+"El huevo ha impactado simplemente contra el asfalto.... ");
 			System.out.println("...puedes escuchar las burlas de los PKS"+ANSI_RESET);
@@ -317,7 +319,7 @@ public class Tablero {
 	    boolean preguntaOk = false;
 	    while (!preguntaOk) {
 	        try {
-	            System.out.println("Ingrese la fila (" + ANSI_YELLOW + "--" + ANSI_RESET + ") donde desea lanzar el huevo (de 0 a 14):");
+	            System.out.println("Ingrese la Fila (" + ANSI_YELLOW + "--" + ANSI_RESET + ") donde desea lanzar el huevo (de 0 a 14):");
 	            String ax = scanner.nextLine();
 	            if (!ax.matches("^(1?[0-4]|[0-9])$")) {
 	                throw new Exception();
@@ -336,7 +338,7 @@ public class Tablero {
 	    boolean preguntaOk = false;
 	    while (!preguntaOk) {
 	        try {
-	            System.out.println("Ingrese la fila (" + ANSI_YELLOW + "--" + ANSI_RESET + ") donde desea lanzar el huevo (de 0 a 14):");
+	            System.out.println("Ingrese la Columna (" + ANSI_YELLOW + "|" + ANSI_RESET + ") donde desea lanzar el huevo (de 0 a 14):");
 	            String ay = scanner.nextLine();
 	            if (!ay.matches("^(1?[0-4]|[0-9])$")) {
 	                throw new Exception();
