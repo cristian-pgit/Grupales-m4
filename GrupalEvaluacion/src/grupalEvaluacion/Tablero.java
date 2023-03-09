@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Tablero {
-	
+	//Se crean e inicializan los atributos
 		private static List<Carro> pks = new ArrayList<Carro>(18);
 		private static  List<Huevo> huevos = new ArrayList<Huevo>();
 		static Random random = new Random();
@@ -17,8 +17,6 @@ public class Tablero {
 		
 		
 		//Grilla de tablero
-	
-		
 			
 		public String[][] tablero = new String[15][15];
 		
@@ -40,6 +38,7 @@ public class Tablero {
 			}
 		}
 		
+		//Mensaje de victoria en colores 
 	public static void victroria() {
 		System.out.println();
 			System.out.println(ANSI_YELLOW+"F"+ANSI_RESET+ANSI_BLUE+"E"+ANSI_RESET+ANSI_RED+"L"+ANSI_CYAN+"I"+ANSI_RESET+ANSI_GREEN+
@@ -48,7 +47,7 @@ public class Tablero {
 					+ "HAS DERROTADO A LA TROPA PKS\n"
 					+ "LA ANARQUIA SE EXIENDE POR OSCARILANDIA FINALMENTE"); ;		
 	}
-	
+	//Logo de victoria
 	public void graficoVictoria() {
 		System.out.println(ANSI_RED+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
 				+ "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣧⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
@@ -68,7 +67,7 @@ public class Tablero {
 	}
 		
 
-	
+	//Se posicionan las kromis en el tablero, se identifican con la letra K
 	public static void ubicarKromis(String[][] tablero) {
         for (int i = 0; i < 3; i++) {
             int row = random.nextInt(15 - 3 + 1);
@@ -83,8 +82,10 @@ public class Tablero {
             int rowe1 = row+1;
             int rowe2 = row+2;
             int nOc = random.nextInt(20)+5;
+          //Se crea el carro
             Carro kro = new Kromi (nOc, randomFecha(), row, col, rowe1, rowe2, randomFecha(), randomMarca());
             pks.add(kro);
+          //Se guardan las posiciones de las kromis
             Posiciones pos = new Posiciones();
             pos.setX1(row);
             pos.setX2(row+1);
@@ -94,6 +95,7 @@ public class Tablero {
         }
     }
 	
+	//Se posicionan los caguanos, se identifican con la letra C
 	public static void ubicarCaguano(String[][] tablero) {
         for (int i = 0; i < 5; i++) {
             int row = random.nextInt(15);
@@ -108,8 +110,10 @@ public class Tablero {
             }
             int nOc = random.nextInt(10)+2;
             int aT = random.nextInt(3)+1;
+          //se crea carro
             Carro caguano = new Caguano (nOc, randomFecha(), row, col, (col+1), aT, randomColor());
             pks.add(caguano);
+          //Se almacena la posicion
             Posiciones pos = new Posiciones();
             pos.setX1(row);
             pos.setY1(col);
@@ -118,6 +122,7 @@ public class Tablero {
         }
     }
 	
+	//Se posicionan las trupallas, se idenitifican con una T
 	public static void ubicarTrupalla(String[][] tablero) {
         for (int i = 0; i < 10; i++) {
             int row = random.nextInt(15);
@@ -130,8 +135,10 @@ public class Tablero {
                 tablero[row + j][col] = "["+ANSI_CYAN+"T"+ANSI_RESET+"]";
             }
             int nOc = random.nextInt(2)+1;
+            //Se crea el carro
             Carro trupalla = new Trupalla (nOc, randomFecha(), row, col, nOc, randomName());
             pks.add(trupalla);
+          //Se almacena la posicion
             Posiciones pos = new Posiciones();
             pos.setX1(row);
             pos.setY1(col);
@@ -139,6 +146,7 @@ public class Tablero {
         }
     }
 
+	//Se crea metodo donde se valida la posicion, que no sea mas de 15
 	private static boolean validarPosicion(String[][] tablero, int row, int col, int size) {
 	    // Checkear si esta dentro de los limites del tablero
 	    if (row < 0 || row + size > tablero.length || col < 0 || col >= tablero[0].length) {
@@ -154,6 +162,7 @@ public class Tablero {
 	    return true;
 	}
 	
+	//Metodo lanzar huevo donde se le da la posicion en el tablero H
 	public static void lanzarHuevo(String tablero [][], String tableroH [][], Scanner scanner) {
 	    int x;
 	    int y;
@@ -166,6 +175,7 @@ public class Tablero {
 	    			System.out.println("Ya has lanzado un huevo en esta posicion");
 	    			break;
 	    		}
+	    		//Se identifica el huevo con la letra H
 	    		scanner.nextLine();
 	    		lanzamientoOk = true;
 	    		for (int i = 0; i < 10; i++) {
@@ -220,6 +230,7 @@ public class Tablero {
 	    }
 	}
 	
+	//Te muestra el tablero a cambio de puntos, en caso de que no, se da mensaje. 
 	public static void mostrarTableroPks(String [][] tablero) {
 		boolean consentir = false;
 		while (consentir == false) {
@@ -251,7 +262,7 @@ public class Tablero {
 		}
 		
 	}
-	
+	// metodo para desplegar tablero con los huevos lanzados
 	public static void mostrarTableroH(String[][] tableroH) {
 		System.out.println(ANSI_YELLOW+"| 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 |"+ANSI_RESET);
 		for (int x=0; x < tableroH.length; x++) {
@@ -279,7 +290,7 @@ public class Tablero {
 //	        System.out.println("|"+ANSI_YELLOW+x+ANSI_RESET);
 //	    }
 //	}
-	
+	// metodo para lanzar un hyevo de forma aleatoria
 	public static void takeALuckyShot(String tablero [][], String tableroH [][]) {
 		int x = 0;
 		int y= 0;
@@ -316,7 +327,7 @@ public class Tablero {
 	}
 
 
-	
+	// metodo para mostrar la informacion de los carros
 	public static void mostrarDatos() {
 		int i = 1;
 		for (Carro c:pks) {
@@ -327,6 +338,8 @@ public class Tablero {
 		}
 		
 	}
+	
+	// metodo para Mostrar la info de la Lista de Huevos y si impacto algo
 	public static void mostrarHuevos(String tablero [][]) {
 		int i = 1;
 		for (Huevo h:huevos) {
@@ -347,6 +360,7 @@ public class Tablero {
 		
 	}
 	
+	// metodo para preguntar por valor X
 	public static int askX() {
 	    int x=-1;
 	    boolean preguntaOk = false;
@@ -366,6 +380,8 @@ public class Tablero {
 	    }
 	    return x;
 	}
+	
+	// metodo para preguntar por valor Y
 	public static int askY() {
 	    int y=-1;
 	    boolean preguntaOk = false;
@@ -386,6 +402,7 @@ public class Tablero {
 	    return y;
 	}
 	
+	// metodo para entregar un valor de Nombre random de una lista
 	public static String randomName() {
 		List<String>names = new ArrayList<String>();
 		names.add("Alan Brito Delgado");
@@ -400,6 +417,7 @@ public class Tablero {
 		return randomName;
 	}
 	
+	// metodo para entregar un valor de Marca random de una lista
 	public static String randomMarca() {
 		List<String>marcas = new ArrayList<String>();
 		marcas.add("Megcedes Bens");
@@ -414,6 +432,7 @@ public class Tablero {
 		return randomMarca;
 	}
 	
+	// metodo para entregar un valor de una fecha random de una lista
 	public static String randomFecha() {
 		List<String>fechas = new ArrayList<String>();
 		fechas.add("11/09/78");
@@ -430,6 +449,7 @@ public class Tablero {
 		return randomFecha;
 	}
 	
+	// metodo para entregar un valor de color random de una lista
 	public static String randomColor() {
 		List<String>color = new ArrayList<String>();
 		color.add("Verde Vomito");
@@ -444,6 +464,7 @@ public class Tablero {
 		return randomColor;
 	}
 	
+	//metodo que muestra las posiciones
 	public static void mostrarPosiciones(List<Posiciones> posiciones) {
 		int i = 1;
 		for (Posiciones p:posiciones) {

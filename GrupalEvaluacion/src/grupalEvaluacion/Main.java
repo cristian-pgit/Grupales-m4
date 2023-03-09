@@ -6,18 +6,19 @@ public class Main {
 	
 	public static Tablero board = new Tablero();
 	
+	//funcion main
 	public static void main (String[]Args) {
-		board.generarTablero();
-		board.genenrartableroH();
+		board.generarTablero(); // genera el tablero seteando el valor default del [-]
+		board.genenrartableroH();  // genera el tableroH seteando el valor default del [-]
 		
 		
 				
-		board.ubicarKromis(board.tablero);
-		board.ubicarCaguano(board.tablero);
-		board.ubicarTrupalla(board.tablero);
+		board.ubicarKromis(board.tablero); //ubica las Kromis
+		board.ubicarCaguano(board.tablero); //ubican los Caguanos
+		board.ubicarTrupalla(board.tablero); //ubicar trupallas
 
-
-		Scanner sc = new Scanner(System.in);
+		// Menu 
+		Scanner sc = new Scanner(System.in); // invocacion del objeto scanner
 		boolean keepPlaying = true;
 		while (keepPlaying) {
 			System.out.println();
