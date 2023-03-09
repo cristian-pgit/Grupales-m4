@@ -5,4 +5,4 @@ Cristian Carrillo,
 Matias Calderon,
 Adrian Fredes,
 Jorge Arancibia,
-Waldo Pizarro.
+Waldo Pizarro. <-- este ya no
