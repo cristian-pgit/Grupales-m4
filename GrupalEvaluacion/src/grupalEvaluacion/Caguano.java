@@ -5,8 +5,9 @@ public class Caguano extends Carro {
 	private int alcanceTiro;
 	private String colorConfeti;
 	private int size = 2;
+	private int y2;
 	
-	public Caguano (int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY, int alcanceTiro, String colorConfeti) {
+	public Caguano (int cOcupantes, String fechaIngreso, int ubicacionX, int ubicacionY, int y2, int alcanceTiro, String colorConfeti) {
 		super(cOcupantes, fechaIngreso, ubicacionX, ubicacionY);
 		this.alcanceTiro = alcanceTiro;
 		this.colorConfeti = colorConfeti;
@@ -40,9 +41,18 @@ public class Caguano extends Carro {
 
 	@Override
 	public String toString() {
-		return 	super.toString()+"\nAlcance de Tiro: "+getAlcanceTiro()+
+		return 	super.toString()+"\nUbicacion en Eje Y2: "+ getY2()+
+				"\nAlcance de Tiro: "+getAlcanceTiro()+
 				"\nColor de Confeti: "+getColorConfeti()+
 				"\nTamano: " + getSize()+"m";
+	}
+
+	public int getY2() {
+		return y2;
+	}
+
+	public void setY2(int y2) {
+		this.y2 = y2;
 	}
 	
 	

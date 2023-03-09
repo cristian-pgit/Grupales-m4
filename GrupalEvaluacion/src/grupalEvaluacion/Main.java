@@ -54,7 +54,7 @@ public class Main {
 				board.puntaje +=10;
 				//board.mostrarTrupalla(board.tablero);
 			}
-			if (board.puntaje >= 57) {
+			if (board.puntaje >= 108) {
 				board.victroria();
 				board.graficoVictoria();
 				keepPlaying = false;

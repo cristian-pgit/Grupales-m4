@@ -80,9 +80,17 @@ public class Tablero {
             for (int j = 0; j < 3; j++) {
                 tablero[row + j][col] = "["+ANSI_GREEN+"K"+ANSI_RESET+"]";
             }
+            int rowe1 = row+1;
+            int rowe2 = row+2;
             int nOc = random.nextInt(20)+5;
-            Carro kro1 = new Kromi (nOc, randomFecha(), row, col, randomFecha(), randomMarca());
-            pks.add(kro1);
+            Carro kro = new Kromi (nOc, randomFecha(), row, col, rowe1, rowe2, randomFecha(), randomMarca());
+            pks.add(kro);
+            Posiciones pos = new Posiciones();
+            pos.setX1(row);
+            pos.setX2(row+1);
+            pos.setX3(row+2);
+            pos.setY1(col);
+            kro.getPosiciones().add(pos);
         }
     }
 	
@@ -96,11 +104,17 @@ public class Tablero {
             }
             for (int j = 0; j < 2; j++) {
             	tablero[row][col + j] = "["+ANSI_BLUE+"C"+ANSI_RESET+"]";
+            	
             }
             int nOc = random.nextInt(10)+2;
             int aT = random.nextInt(3)+1;
-            Carro caguamo = new Caguano (nOc, randomFecha(), row, col,aT, randomColor());
-            pks.add(caguamo);
+            Carro caguano = new Caguano (nOc, randomFecha(), row, col, (col+1), aT, randomColor());
+            pks.add(caguano);
+            Posiciones pos = new Posiciones();
+            pos.setX1(row);
+            pos.setY1(col);
+            pos.setY2(col+1);
+            caguano.getPosiciones().add(pos);
         }
     }
 	
@@ -118,6 +132,10 @@ public class Tablero {
             int nOc = random.nextInt(2)+1;
             Carro trupalla = new Trupalla (nOc, randomFecha(), row, col, nOc, randomName());
             pks.add(trupalla);
+            Posiciones pos = new Posiciones();
+            pos.setX1(row);
+            pos.setY1(col);
+            trupalla.getPosiciones().add(pos);
         }
     }
 
@@ -167,11 +185,26 @@ public class Tablero {
 	    				System.out.println(ANSI_GREEN+"Le diste a un Caguano! - 2 punto"+ANSI_RESET);
 	    				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
 	    				puntaje+=2;
+	    				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+	    						&&tableroH[x][y+1] == "["+ANSI_RED+"H"+ANSI_RESET+"]" || 
+	    						tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+	    	    						&&tableroH[x][y-1] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
+	    					System.out.println("Te echaste el Caguano! - 7pts extra");
+	    					puntaje+=10;
+	    				}
 	    			}
 	    			if (tablero[x][y] == "["+ANSI_GREEN+"K"+ANSI_RESET+"]" ) {
 	    				System.out.println(ANSI_GREEN+"Le diste a una Kromi! - 3 punto"+ANSI_RESET);
 	    				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
 	    				puntaje+=3;
+	    				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+	    						&&tableroH[x+1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+	    						&&tableroH[x+2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]" ||
+	    						tableroH[x-1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+	    						&&tableroH[x-2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
+	    					System.out.println("Te echaste la Kromi! - 10pts extra");
+	    					puntaje+=10;
+	    				}
 	    			}
 	    			mostrarTableroH(tableroH);
 	    		}  else {
@@ -409,6 +442,17 @@ public class Tablero {
 		String randomColor = color.get(randomIndex);
 		
 		return randomColor;
+	}
+	
+	public static void mostrarPosiciones(List<Posiciones> posiciones) {
+		int i = 1;
+		for (Posiciones p:posiciones) {
+			System.out.println(ANSI_WHITE+"----------------- Vehiculo: "+i+" -----------------------"+ANSI_RESET);
+			p.toString(); 
+			i++;
+			System.out.println(ANSI_PURPLE+"----------------------------------------------------"+ANSI_RESET);
+		}
+		
 	}
 	
 
