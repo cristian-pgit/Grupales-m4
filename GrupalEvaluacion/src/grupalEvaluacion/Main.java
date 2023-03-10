@@ -1,12 +1,25 @@
+/*
+ * 
+ */
 package grupalEvaluacion;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 
+	/** The board. */
 	public static Tablero board = new Tablero();
 
+	/**
+	 * The main method.
+	 *
+	 * @param Args the arguments
+	 */
 	//funcion main
 	public static void main (String[]Args) {
 		board.generarTablero(); // genera el tablero seteando el valor default del [-]
@@ -85,13 +98,28 @@ public class Main {
 
 
 
+	/** The Constant ANSI_WHITE. */
 	public static final String ANSI_WHITE = "\u001B[37m";
+	
+	/** The Constant ANSI_PURPLE. */
 	public static final String ANSI_PURPLE = "\u001B[35m";
+	
+	/** The Constant ANSI_BLUE. */
 	public static final String ANSI_BLUE = "\u001B[34m";
+	
+	/** The Constant ANSI_CYAN. */
 	public static final String ANSI_CYAN = "\u001B[36m";
+	
+	/** The Constant ANSI_GREEN. */
 	public static final String ANSI_GREEN = "\u001B[32m";
+	
+	/** The Constant ANSI_YELLOW. */
 	public static final String ANSI_YELLOW = "\u001B[33m";
+	
+	/** The Constant ANSI_RESET. */
 	public static final String ANSI_RESET = "\u001B[0m";
+	
+	/** The Constant ANSI_RED. */
 	public static final String ANSI_RED = "\u001B[31m";	   
 
 }

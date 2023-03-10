@@ -1,25 +1,47 @@
+/*
+ * 
+ */
 package grupalEvaluacion;
 
 
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Tablero.
+ */
 public class Tablero {
+	
+	/** The pks. */
 	//Se crean e inicializan los atributos
 		private static List<Carro> pks = new ArrayList<Carro>(18);
+		
+		/** The huevos. */
 		private static  List<Huevo> huevos = new ArrayList<Huevo>();
+		
+		/** The random. */
 		static Random random = new Random();
+		
+		/** The puntaje. */
 		public static  int puntaje = 0;
+		
+		/** The scanner. */
 		static Scanner scanner = new Scanner(System.in);
 		
 		
 		//Grilla de tablero
 			
+		/** The tablero. */
 		public String[][] tablero = new String[15][15];
 		
+		/**
+		 * Generar tablero.
+		 */
 		public void generarTablero() {
 			for (int i = 0; i < 15; i++) {
 				for (int j = 0; j < 15; j++) {
@@ -29,7 +51,12 @@ public class Tablero {
 		}
 			
 
+		/** The tablero H. */
 		public String[][] tableroH = new String[15][15];
+		
+		/**
+		 * Genenrartablero H.
+		 */
 		public void genenrartableroH() {
 			for (int i = 0; i < 15; i++) {
 				for (int j = 0; j < 15; j++) {
@@ -38,6 +65,9 @@ public class Tablero {
 			}
 		}
 		
+		/**
+		 * Victroria.
+		 */
 		//Mensaje de victoria en colores 
 	public static void victroria() {
 		System.out.println();
@@ -47,6 +77,10 @@ public class Tablero {
 					+ "HAS DERROTADO A LA TROPA PKS\n"
 					+ "LA ANARQUIA SE EXIENDE POR OSCARILANDIA FINALMENTE"); ;		
 	}
+	
+	/**
+	 * Grafico victoria.
+	 */
 	//Logo de victoria
 	public void graficoVictoria() {
 		System.out.println(ANSI_RED+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
@@ -67,6 +101,11 @@ public class Tablero {
 	}
 		
 
+	/**
+	 * Ubicar kromis.
+	 *
+	 * @param tablero the tablero
+	 */
 	//Se posicionan las kromis en el tablero, se identifican con la letra K
 	public static void ubicarKromis(String[][] tablero) {
         for (int i = 0; i < 3; i++) {
@@ -95,6 +134,11 @@ public class Tablero {
         }
     }
 	
+	/**
+	 * Ubicar caguano.
+	 *
+	 * @param tablero the tablero
+	 */
 	//Se posicionan los caguanos, se identifican con la letra C
 	public static void ubicarCaguano(String[][] tablero) {
         for (int i = 0; i < 5; i++) {
@@ -122,6 +166,11 @@ public class Tablero {
         }
     }
 	
+	/**
+	 * Ubicar trupalla.
+	 *
+	 * @param tablero the tablero
+	 */
 	//Se posicionan las trupallas, se idenitifican con una T
 	public static void ubicarTrupalla(String[][] tablero) {
         for (int i = 0; i < 10; i++) {
@@ -146,6 +195,15 @@ public class Tablero {
         }
     }
 
+	/**
+	 * Validar posicion.
+	 *
+	 * @param tablero the tablero
+	 * @param row the row
+	 * @param col the col
+	 * @param size the size
+	 * @return true, if successful
+	 */
 	//Se crea metodo donde se valida la posicion, que no sea mas de 15
 	private static boolean validarPosicion(String[][] tablero, int row, int col, int size) {
 	    // Checkear si esta dentro de los limites del tablero
@@ -162,6 +220,13 @@ public class Tablero {
 	    return true;
 	}
 	
+	/**
+	 * Lanzar huevo.
+	 *
+	 * @param tablero the tablero
+	 * @param tableroH the tablero H
+	 * @param scanner the scanner
+	 */
 	//Metodo lanzar huevo donde se le da la posicion en el tablero H
 	public static void lanzarHuevo(String tablero [][], String tableroH [][], Scanner scanner) {
 	    int x;
@@ -176,7 +241,6 @@ public class Tablero {
 	    			break;
 	    		}
 	    		//Se identifica el huevo con la letra H
-	    		scanner.nextLine();
 	    		lanzamientoOk = true;
 	    		for (int i = 0; i < 10; i++) {
 	    			for (int j = 0; j < 1; j++) {
@@ -185,43 +249,7 @@ public class Tablero {
 	    		}  
 	    		Huevo huevo = new Huevo(x,y);
 	    		huevos.add(huevo);
-	    		if(tablero[x][y] != "[-]") {
-	    			if (tablero[x][y] == "["+ANSI_CYAN+"T"+ANSI_RESET+"]" ) {
-	    				System.out.println(ANSI_GREEN+"Le diste a una Trupalla y te la echaste! - 1 punto"+ANSI_RESET);
-	    				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
-	    				puntaje++;
-	    			}
-	    			if (tablero[x][y] == "["+ANSI_BLUE+"C"+ANSI_RESET+"]" ) {
-	    				System.out.println(ANSI_GREEN+"Le diste a un Caguano! - 2 punto"+ANSI_RESET);
-	    				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
-	    				puntaje+=2;
-	    				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
-	    						&&tableroH[x][y+1] == "["+ANSI_RED+"H"+ANSI_RESET+"]" || 
-	    						tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
-	    	    						&&tableroH[x][y-1] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
-	    					System.out.println("Te echaste el Caguano! - 7pts extra");
-	    					puntaje+=7;
-	    				}
-	    			}
-	    			if (tablero[x][y] == "["+ANSI_GREEN+"K"+ANSI_RESET+"]" ) {
-	    				System.out.println(ANSI_GREEN+"Le diste a una Kromi! - 3 punto"+ANSI_RESET);
-	    				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
-	    				puntaje+=3;
-	    				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
-	    						&&tableroH[x+1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
-	    						&&tableroH[x+2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]" ||
-	    						tableroH[x-1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
-	    						&&tableroH[x-2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
-	    					System.out.println("Te echaste la Kromi! - 10pts extra");
-	    					puntaje+=10;
-	    				}
-	    			}
-	    			mostrarTableroH(tableroH);
-	    		}  else {
-	    			System.out.println(ANSI_CYAN+"El huevo ha impactado simplemente contra el asfalto.... ");
-	    			System.out.println("...puedes escuchar las burlas de los PKS"+ANSI_RESET);
-	    			mostrarTableroH(tableroH);	
-	    		}
+	    		verificarTiro(tablero, tableroH, x, y);
 	    	}
 	    	catch (Exception e) {
 	    		System.out.println("Posicion incorrecta. Debe de ser de 0 a 14");
@@ -230,6 +258,11 @@ public class Tablero {
 	    }
 	}
 	
+	/**
+	 * Mostrar tablero pks.
+	 *
+	 * @param tablero the tablero
+	 */
 	//Te muestra el tablero a cambio de puntos, en caso de que no, se da mensaje. 
 	public static void mostrarTableroPks(String [][] tablero) {
 		boolean consentir = false;
@@ -262,11 +295,17 @@ public class Tablero {
 		}
 		
 	}
+	
+	/**
+	 * Mostrar tablero H.
+	 *
+	 * @param tableroH the tablero H
+	 */
 	// metodo para desplegar tablero con los huevos lanzados
 	public static void mostrarTableroH(String[][] tableroH) {
-		System.out.println(ANSI_YELLOW+"| 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 |"+ANSI_RESET);
+		System.out.println("f/c|"+ANSI_YELLOW+" 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 |"+ANSI_RESET);
 		for (int x=0; x < tableroH.length; x++) {
-			  System.out.print("|");
+			  System.out.print(ANSI_YELLOW+String.format("%2d ", x)+ANSI_RESET+"|");
 			  for (int y=0; y < tableroH[x].length; y++) {
 			    System.out.print (tableroH[x][y]);
 			    if (y!=tableroH[x].length-1) System.out.print("");
@@ -290,7 +329,13 @@ public class Tablero {
 //	        System.out.println("|"+ANSI_YELLOW+x+ANSI_RESET);
 //	    }
 //	}
-	// metodo para lanzar un hyevo de forma aleatoria
+	/**
+ * Take A lucky shot.
+ *
+ * @param tablero the tablero
+ * @param tableroH the tablero H
+ */
+// metodo para lanzar un hyevo de forma aleatoria
 	public static void takeALuckyShot(String tablero [][], String tableroH [][]) {
 		int x = 0;
 		int y= 0;
@@ -301,6 +346,12 @@ public class Tablero {
 		tableroH[x][y] = "["+ANSI_YELLOW+"H"+ANSI_RESET+"]";
 		Huevo huevo = new Huevo(x,y);
 		huevos.add(huevo);
+		verificarTiro(tablero, tableroH, x, y);
+		Toolkit.getDefaultToolkit().beep();
+	}
+
+	//Metodo que verifica si el impacto golpa algun vehiculo y asigna puntaje
+	public static void verificarTiro(String tablero[][], String tableroH[][], int x, int y) {
 		if(tablero[x][y] != "[-]") {
 			if (tablero[x][y] == "["+ANSI_CYAN+"T"+ANSI_RESET+"]" ) {
 				System.out.println(ANSI_GREEN+"Le diste a una Trupalla y te la echaste! - 1 punto"+ANSI_RESET);
@@ -311,6 +362,9 @@ public class Tablero {
 				System.out.println(ANSI_GREEN+"Le diste a un Caguano! - 2 punto"+ANSI_RESET);
 				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
 				puntaje+=2;
+				if (y < 0) {
+					y = 0;
+				}
 				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
 						&&tableroH[x][y+1] == "["+ANSI_RED+"H"+ANSI_RESET+"]" || 
 						tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
@@ -323,6 +377,9 @@ public class Tablero {
 				System.out.println(ANSI_GREEN+"Le diste a una Kromi! - 3 punto"+ANSI_RESET);
 				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
 				puntaje+=3;
+				if (x < 0) {
+					x = 0;
+				}
 				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
 						&&tableroH[x+1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
 						&&tableroH[x+2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]" ||
@@ -341,7 +398,9 @@ public class Tablero {
 		}
 	}
 
-
+	/**
+	 * Mostrar datos.
+	 */
 	// metodo para mostrar la informacion de los carros
 	public static void mostrarDatos() {
 		int i = 1;
@@ -354,6 +413,11 @@ public class Tablero {
 		
 	}
 	
+	/**
+	 * Mostrar huevos.
+	 *
+	 * @param tablero the tablero
+	 */
 	// metodo para Mostrar la info de la Lista de Huevos y si impacto algo
 	public static void mostrarHuevos(String tablero [][]) {
 		int i = 1;
@@ -375,6 +439,11 @@ public class Tablero {
 		
 	}
 	
+	/**
+	 * Ask X.
+	 *
+	 * @return the int
+	 */
 	// metodo para preguntar por valor X
 	public static int askX() {
 	    int x=-1;
@@ -396,6 +465,11 @@ public class Tablero {
 	    return x;
 	}
 	
+	/**
+	 * Ask Y.
+	 *
+	 * @return the int
+	 */
 	// metodo para preguntar por valor Y
 	public static int askY() {
 	    int y=-1;
@@ -417,6 +491,11 @@ public class Tablero {
 	    return y;
 	}
 	
+	/**
+	 * Random name.
+	 *
+	 * @return the string
+	 */
 	// metodo para entregar un valor de Nombre random de una lista
 	public static String randomName() {
 		List<String>names = new ArrayList<String>();
@@ -432,6 +511,11 @@ public class Tablero {
 		return randomName;
 	}
 	
+	/**
+	 * Random marca.
+	 *
+	 * @return the string
+	 */
 	// metodo para entregar un valor de Marca random de una lista
 	public static String randomMarca() {
 		List<String>marcas = new ArrayList<String>();
@@ -447,6 +531,11 @@ public class Tablero {
 		return randomMarca;
 	}
 	
+	/**
+	 * Random fecha.
+	 *
+	 * @return the string
+	 */
 	// metodo para entregar un valor de una fecha random de una lista
 	public static String randomFecha() {
 		List<String>fechas = new ArrayList<String>();
@@ -464,6 +553,11 @@ public class Tablero {
 		return randomFecha;
 	}
 	
+	/**
+	 * Random color.
+	 *
+	 * @return the string
+	 */
 	// metodo para entregar un valor de color random de una lista
 	public static String randomColor() {
 		List<String>color = new ArrayList<String>();
@@ -479,6 +573,11 @@ public class Tablero {
 		return randomColor;
 	}
 	
+	/**
+	 * Mostrar posiciones.
+	 *
+	 * @param posiciones the posiciones
+	 */
 	//metodo que muestra las posiciones
 	public static void mostrarPosiciones(List<Posiciones> posiciones) {
 		int i = 1;
@@ -494,13 +593,28 @@ public class Tablero {
 
 
 	
+	/** The Constant ANSI_WHITE. */
 	public static final String ANSI_WHITE = "\u001B[37m";
+	
+	/** The Constant ANSI_PURPLE. */
 	public static final String ANSI_PURPLE = "\u001B[35m";
+	
+	/** The Constant ANSI_BLUE. */
 	public static final String ANSI_BLUE = "\u001B[34m";
+	
+	/** The Constant ANSI_CYAN. */
 	public static final String ANSI_CYAN = "\u001B[36m";
+	
+	/** The Constant ANSI_GREEN. */
 	public static final String ANSI_GREEN = "\u001B[32m";
+	
+	/** The Constant ANSI_YELLOW. */
 	public static final String ANSI_YELLOW = "\u001B[33m";
+	
+	/** The Constant ANSI_RESET. */
 	public static final String ANSI_RESET = "\u001B[0m";
+	
+	/** The Constant ANSI_RED. */
 	public static final String ANSI_RED = "\u001B[31m";	     
 }
 
