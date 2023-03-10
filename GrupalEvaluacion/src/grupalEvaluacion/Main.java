@@ -1,18 +1,19 @@
 package grupalEvaluacion;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-	
+
 	public static Tablero board = new Tablero();
-	
+
 	//funcion main
 	public static void main (String[]Args) {
 		board.generarTablero(); // genera el tablero seteando el valor default del [-]
 		board.genenrartableroH();  // genera el tableroH seteando el valor default del [-]
-		
-		
-				
+
+
+
 		board.ubicarKromis(board.tablero); //ubica las Kromis
 		board.ubicarCaguano(board.tablero); //ubican los Caguanos
 		board.ubicarTrupalla(board.tablero); //ubicar trupallas
@@ -30,48 +31,60 @@ public class Main {
 					+ "\t4. Ver info de los Carros PKS\n"
 					+ "\t5. Ver los Huevos lanzados\n"
 					+ "\t6. Salir"+ANSI_RESET);
-			int opcion = sc.nextInt();
-			switch (opcion) {
-			case 1:
-				Tablero.lanzarHuevo(board.tablero, board.tableroH, sc);
-				break;
-			case 2:
-				Tablero.takeALuckyShot(board.tablero, board.tableroH);
-				break;
-			case 3:
-				Tablero.mostrarTableroPks(board.tablero);
-				break;
-			case 4:
-				Tablero.mostrarDatos();
-				break;
-			case 5:
-				Tablero.mostrarHuevos(board.tablero);
-				break;
-			case 6:
-				keepPlaying = false;
-				System.out.println("Hasta una proxima ocasion...");
-				break;
-			case 0:
-				board.puntaje +=10;
-				//board.mostrarTrupalla(board.tablero);
+			try {
+				String op = sc.nextLine();
+				if(!op.matches("^[0-6]$")) {
+					System.out.println("Valor incorrecto. Intente de nuevo");
+					continue;
+				}
+				int opcion = Integer.parseInt(op);
+				switch (opcion) {
+				case 1:
+					Tablero.lanzarHuevo(board.tablero, board.tableroH, sc);
+					break;
+				case 2:
+					Tablero.takeALuckyShot(board.tablero, board.tableroH);
+					break;
+				case 3:
+					Tablero.mostrarTableroPks(board.tablero);
+					break;
+				case 4:
+					Tablero.mostrarDatos();
+					break;
+				case 5:
+					Tablero.mostrarHuevos(board.tablero);
+					break;
+				case 6:
+					keepPlaying = false;
+					System.out.println("Hasta una proxima ocasion...");
+					break;
+				case 0:
+					board.puntaje +=10;
+					//board.mostrarTrupalla(board.tablero);
+				}
+				if (board.puntaje >= 122) {
+					board.victroria();
+					board.graficoVictoria();
+					keepPlaying = false;
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Valor incorrecto. Intente de nuevo");
 			}
-			if (board.puntaje >= 108) {
-				board.victroria();
-				board.graficoVictoria();
-				keepPlaying = false;
-			}
+
+
+
 		}
 
 		sc.close();
 	}
-		
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	public static final String ANSI_WHITE = "\u001B[37m";
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_BLUE = "\u001B[34m";
@@ -80,5 +93,5 @@ public class Main {
 	public static final String ANSI_YELLOW = "\u001B[33m";
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_RED = "\u001B[31m";	   
-	
+
 }

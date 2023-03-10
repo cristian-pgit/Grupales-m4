@@ -200,7 +200,7 @@ public class Tablero {
 	    						tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
 	    	    						&&tableroH[x][y-1] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
 	    					System.out.println("Te echaste el Caguano! - 7pts extra");
-	    					puntaje+=10;
+	    					puntaje+=7;
 	    				}
 	    			}
 	    			if (tablero[x][y] == "["+ANSI_GREEN+"K"+ANSI_RESET+"]" ) {
@@ -311,11 +311,26 @@ public class Tablero {
 				System.out.println(ANSI_GREEN+"Le diste a un Caguano! - 2 punto"+ANSI_RESET);
 				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
 				puntaje+=2;
+				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+						&&tableroH[x][y+1] == "["+ANSI_RED+"H"+ANSI_RESET+"]" || 
+						tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+	    						&&tableroH[x][y-1] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
+					System.out.println("Te echaste el Caguano! - 7pts extra");
+					puntaje+=7;
+				}
 			}
 			if (tablero[x][y] == "["+ANSI_GREEN+"K"+ANSI_RESET+"]" ) {
 				System.out.println(ANSI_GREEN+"Le diste a una Kromi! - 3 punto"+ANSI_RESET);
 				tableroH[x][y] = "["+ANSI_RED+"H"+ANSI_RESET+"]";
 				puntaje+=3;
+				if (tableroH[x][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+						&&tableroH[x+1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+						&&tableroH[x+2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]" ||
+						tableroH[x-1][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"
+						&&tableroH[x-2][y] == "["+ANSI_RED+"H"+ANSI_RESET+"]"){
+					System.out.println("Te echaste la Kromi! - 10pts extra");
+					puntaje+=10;
+				}
 			}
 			mostrarTableroH(tableroH);  
 
